@@ -1,0 +1,31 @@
+name: Daily Mega-Sub Merge
+
+on:
+  schedule:
+    - cron: '0 3 * * *'    # каждый день в 3:00 по UTC (можно поменять)
+  workflow_dispatch:       # можно запускать вручную
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run merger
+        run: python merge_subs.py
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "MegaSub Bot"
+          git config --global user.email "bot@github.com"
+          git add merged_subs.txt
+          git commit -m "Auto-merge $(date +'%Y-%m-%d %H:%M')" || echo "Nothing to commit"
+          git push
