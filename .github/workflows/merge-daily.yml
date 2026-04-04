@@ -1,132 +1,45 @@
-name: Merge Daily Subscriptions
+name: Daily Mega-Sub Merge
 
 on:
   schedule:
-    - cron: '0 3 * * *'      # каждый день в 3:00 UTC
-  workflow_dispatch:         # ручной запуск
+    - cron: '0 3 * * *'      # каждый день в 3:00 по UTC (6:00 МСК)
+  workflow_dispatch:         # можно запускать вручную кнопкой
+
+# Даём права на запись в репозиторий (чтобы мог пушить файлы в папку subs/)
+permissions:
+  contents: write
 
 jobs:
-  update-subs:
+  merge:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run subscription splitter (from links.txt)
-        run: |
-          python3 - << 'EOF'
-import os
-import requests
-import base64
-
-# ================= НАСТРОЙКИ =================
-LINKS_FILE = "links.txt"
-OUTPUT_FOLDER = "subscriptions_4k"
-MAX_PER_FILE = 4000
-# ============================================
-
-def clear_folder(folder):
-    if os.path.exists(folder):
-        for f in os.listdir(folder):
-            path = os.path.join(folder, f)
-            if os.path.isfile(path):
-                os.remove(path)
-        print(f"Папка очищена: {folder}")
-    else:
-        os.makedirs(folder)
-        print(f"Папка создана: {folder}")
-
-def decode_base64(text):
-    text = text.strip()
-    if not text:
-        return ""
-    padding = len(text) % 4
-    if padding:
-        text += "=" * (4 - padding)
-    try:
-        return base64.urlsafe_b64decode(text).decode("utf-8")
-    except:
-        try:
-            return base64.b64decode(text).decode("utf-8")
-        except:
-            return text
-
-def fetch_sub(url):
-    print(f"Загружаем: {url}")
-    try:
-        r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        r.raise_for_status()
-        content = r.text.strip()
-        decoded = decode_base64(content)
-        lines = (decoded if decoded else content).splitlines()
-        nodes = [line.strip() for line in lines if line.strip() and not line.startswith("#") and "://" in line]
-        print(f"→ Получено {len(nodes)} нод")
-        return nodes
-    except Exception as e:
-        print(f"Ошибка при загрузке {url}: {e}")
-        return []
-
-# Читаем ссылки из links.txt
-if not os.path.exists(LINKS_FILE):
-    print(f"Ошибка: файл {LINKS_FILE} не найден!")
-    exit(1)
-
-with open(LINKS_FILE, "r", encoding="utf-8") as f:
-    sub_urls = [line.strip() for line in f if line.strip() and not line.startswith("#")]
-
-print(f"Найдено {len(sub_urls)} subscription-ссылок в {LINKS_FILE}")
-
-clear_folder(OUTPUT_FOLDER)
-
-all_nodes = []
-for url in sub_urls:
-    nodes = fetch_sub(url)
-    all_nodes.extend(nodes)
-
-total = len(all_nodes)
-print(f"\nВсего собрано нод: {total}")
-
-if total == 0:
-    print("Ничего не собрано!")
-    exit(1)
-
-# Разбиваем по 4000
-file_num = 0
-for i in range(0, total, MAX_PER_FILE):
-    chunk = all_nodes[i:i + MAX_PER_FILE]
-    file_num += 1
-    filename = f"{file_num}.txt"
-    filepath = os.path.join(OUTPUT_FOLDER, filename)
-    
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write("\n".join(chunk) + "\n")
-    
-    print(f"Создан {filename} — {len(chunk)} ссылок")
-
-print(f"\nГотово! Создано {file_num} файлов в папке {OUTPUT_FOLDER}")
-EOF
+      - name: Run merger script
+        run: python merge_subs.py
 
       - name: Commit and push changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "MegaSub Bot"
+          git config --global user.email "bot@github.com"
           
-          if [[ -n $(git status --porcelain) ]]; then
-            git add "${OUTPUT_FOLDER}/"
-            git commit -m "Daily update: split subscriptions into 4k chunks"
-            git push
-            echo "Изменения запушены"
+          # Добавляем только папку subs/
+          git add subs/
+          
+          # Проверяем, есть ли изменения
+          if git diff --staged --quiet; then
+            echo "Ничего не изменилось, коммитить нечего"
           else
-            echo "Нет изменений для коммита"
+            git commit -m "Auto-merge $(date +'%Y-%m-%d %H:%M UTC') - updated subs folder"
+            git push
           fi
