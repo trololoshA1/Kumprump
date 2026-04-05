@@ -2,12 +2,11 @@ name: Daily Mega-Sub Merge
 
 on:
   schedule:
-    - cron: '0 3 * * *'      # каждый день в 3:00 по UTC (6:00 МСК)
-  workflow_dispatch:         # можно запускать вручную кнопкой
+    - cron: '0 3 * * *'      # каждый день в 3:00 UTC (6:00 МСК)
+  workflow_dispatch:         # кнопка для ручного запуска
 
-# Даём права на запись в репозиторий (чтобы мог пушить файлы в папку subs/)
 permissions:
-  contents: write
+  contents: write            # обязательно для записи файлов
 
 jobs:
   merge:
@@ -23,7 +22,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests geoip2
 
       - name: Run merger script
         run: python merge_subs.py
@@ -33,13 +32,12 @@ jobs:
           git config --global user.name "MegaSub Bot"
           git config --global user.email "bot@github.com"
           
-          # Добавляем только папку subs/
+          # Добавляем все новые папки с разделением
           git add subs/
           
-          # Проверяем, есть ли изменения
           if git diff --staged --quiet; then
-            echo "Ничего не изменилось, коммитить нечего"
+            echo "Ничего не изменилось"
           else
-            git commit -m "Auto-merge $(date +'%Y-%m-%d %H:%M UTC') - updated subs folder"
+            git commit -m "Auto-merge $(date +'%Y-%m-%d %H:%M UTC') - RU + World split"
             git push
           fi
