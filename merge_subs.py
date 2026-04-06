@@ -6,61 +6,11 @@ import re
 import ipaddress
 from datetime import datetime
 
-# ================== НАСТРОЙКИ ==================
 INPUT_FILE = "links.txt"
 MAX_LINKS_PER_FILE = 4000
-TIMEOUT = 15
-RETRIES = 3
-DELAY = 1.2
 
-# Папки для разделения
 RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
-
-# GeoIP база (скачивается автоматически при первом запуске)
-GEOIP_DB = "GeoLite2-Country.mmdb"
-# ===============================================
-
-def download_geoip_db():
-    if os.path.exists(GEOIP_DB):
-        return
-    print("Скачиваем GeoLite2-Country базу...")
-    url = "https://git.io/GeoLite2-Country.mmdb"
-    r = requests.get(url, timeout=30)
-    with open(GEOIP_DB, "wb") as f:
-        f.write(r.content)
-    print("GeoIP база скачана.")
-
-try:
-    import geoip2.database
-    download_geoip_db()
-    reader = geoip2.database.Reader(GEOIP_DB)
-except:
-    reader = None
-    print("GeoIP не удалось загрузить, будет только парсинг IP без проверки страны.")
-
-def extract_ip_from_link(link):
-    """Вытаскиваем IP из конфига (vless, vmess, hysteria2, warp и т.д.)"""
-    # Простой поиск IPv4
-    ipv4 = re.search(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', link)
-    if ipv4:
-        ip = ipv4.group(1)
-        try:
-            ipaddress.ip_address(ip)
-            return ip
-        except:
-            pass
-    # Для Warp и некоторых других — можно расширить позже
-    return None
-
-def is_russian_ip(ip):
-    if not reader or not ip:
-        return False
-    try:
-        response = reader.country(ip)
-        return response.country.iso_code == "RU"
-    except:
-        return False
 
 def is_proxy_link(line):
     line = line.strip()
@@ -68,7 +18,44 @@ def is_proxy_link(line):
         return False
     return any(line.startswith(p) for p in ["vless://", "vmess://", "trojan://", "ss://", "warp://", "hysteria2://", "hy2://", "tuic://"])
 
-print(f"[{datetime.now()}] Запуск сбора и разделения подписок...")
+def extract_ip(link):
+    # Более агрессивный поиск IP
+    matches = re.findall(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})', link)
+    for m in matches:
+        try:
+            ip = ipaddress.ip_address(m)
+            if not ip.is_private and not ip.is_loopback:
+                return str(ip)
+        except:
+            pass
+    return None
+
+def is_russian_ip(ip):
+    if not ip:
+        return False
+    # Простая проверка по популярным российским диапазонам (быстро и без базы)
+    ru_ranges = [
+        "5.3.", "5.101.", "5.255.", "31.148.", "31.177.", "31.207.", "37.9.", "37.140.", "37.230.",
+        "45.8.", "45.67.", "45.82.", "45.86.", "45.91.", "45.136.", "45.144.", "46.17.", "46.39.",
+        "46.148.", "46.229.", "46.243.", "62.109.", "62.113.", "77.40.", "77.220.", "77.222.",
+        "78.29.", "79.104.", "79.132.", "79.137.", "80.66.", "80.237.", "81.19.", "81.177.",
+        "82.146.", "82.202.", "83.69.", "83.222.", "84.201.", "84.252.", "85.192.", "85.236.",
+        "87.236.", "87.250.", "89.108.", "89.111.", "89.169.", "89.188.", "89.208.", "89.253.",
+        "90.156.", "91.103.", "91.142.", "91.189.", "91.201.", "91.217.", "91.218.", "91.219.",
+        "92.241.", "92.255.", "93.157.", "93.170.", "93.180.", "94.103.", "94.139.", "94.142.",
+        "94.232.", "95.163.", "95.181.", "95.213.", "95.214.", "95.215.", "109.194.", "109.195.",
+        "109.238.", "109.252.", "128.140.", "130.193.", "141.8.", "146.120.", "151.252.", "176.99.",
+        "176.112.", "176.118.", "178.154.", "178.210.", "178.248.", "178.250.", "185.5.", "185.26.",
+        "185.43.", "185.60.", "185.71.", "185.86.", "185.125.", "185.137.", "185.165.", "185.170.",
+        "185.178.", "185.189.", "185.200.", "185.215.", "188.68.", "188.93.", "188.114.", "188.120.",
+        "188.123.", "188.162.", "188.165.", "188.170.", "188.191.", "188.225.", "188.242.", "193.0.",
+        "193.32.", "193.124.", "193.232.", "194.58.", "194.67.", "194.85.", "194.87.", "194.135.",
+        "195.2.", "195.20.", "195.208.", "195.211.", "195.239.", "212.109.", "212.193.", "213.108.",
+        "213.180.", "217.12.", "217.106.", "217.107.", "217.112.", "217.118."
+    ]
+    return any(ip.startswith(prefix) for prefix in ru_ranges)
+
+print(f"[{datetime.now()}] Запуск разделения RU / World...")
 
 os.makedirs(RU_FOLDER, exist_ok=True)
 os.makedirs(WORLD_FOLDER, exist_ok=True)
@@ -77,69 +64,49 @@ with open(INPUT_FILE, "r", encoding="utf-8") as f:
     urls = [line.strip() for line in f if line.strip() and not line.startswith("#")]
 
 merged = []
-total_ru = 0
-total_world = 0
-
 for i, url in enumerate(urls, 1):
-    print(f"[{i}/{len(urls)}] Обработка: {url[:90]}...")
-    for attempt in range(RETRIES):
+    print(f"[{i}/{len(urls)}] Скачиваю...")
+    for _ in range(3):
         try:
-            r = requests.get(url, timeout=TIMEOUT, headers={"User-Agent": "Mozilla/5.0"})
+            r = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
             r.raise_for_status()
             content = r.text
-
             if "://" not in content[:300] and len(content) > 800:
                 try:
                     content = base64.b64decode(content + "===").decode("utf-8", errors="ignore")
                 except:
                     pass
-
             for line in content.splitlines():
                 if is_proxy_link(line):
                     merged.append(line.strip())
             break
-        except Exception as e:
-            print(f"   Ошибка: {e}")
+        except:
             time.sleep(2)
-    time.sleep(DELAY)
+    time.sleep(1.2)
 
-merged = list(dict.fromkeys(merged))  # убираем дубли
+merged = list(dict.fromkeys(merged))
 
-print(f"\nВсего уникальных конфигов: {len(merged)}")
+ru_links = [link for link in merged if is_russian_ip(extract_ip(link))]
+world_links = [link for link in merged if link not in ru_links]
 
-# Разделяем и сохраняем
-ru_links = []
-world_links = []
-
-for link in merged:
-    ip = extract_ip_from_link(link)
-    if is_russian_ip(ip):
-        ru_links.append(link)
-        total_ru += 1
-    else:
-        world_links.append(link)
-        total_world += 1
+print(f"Всего уникальных: {len(merged)}")
+print(f"Российских найдено: {len(ru_links)}")
+print(f"Зарубежных: {len(world_links)}")
 
 # Сохраняем RU
 for i in range(0, len(ru_links), MAX_LINKS_PER_FILE):
     chunk = ru_links[i:i + MAX_LINKS_PER_FILE]
     part = (i // MAX_LINKS_PER_FILE) + 1
-    path = os.path.join(RU_FOLDER, f"ru_part_{part}.txt")
-    with open(path, "w", encoding="utf-8") as f:
-        for l in chunk:
-            f.write(l + "\n")
-    print(f"→ RU: {path} — {len(chunk)} конфигов")
+    with open(f"{RU_FOLDER}/ru_part_{part}.txt", "w", encoding="utf-8") as f:
+        for link in chunk:
+            f.write(link + "\n")
 
 # Сохраняем World
 for i in range(0, len(world_links), MAX_LINKS_PER_FILE):
     chunk = world_links[i:i + MAX_LINKS_PER_FILE]
     part = (i // MAX_LINKS_PER_FILE) + 1
-    path = os.path.join(WORLD_FOLDER, f"world_part_{part}.txt")
-    with open(path, "w", encoding="utf-8") as f:
-        for l in chunk:
-            f.write(l + "\n")
-    print(f"→ World: {path} — {len(chunk)} конфигов")
+    with open(f"{WORLD_FOLDER}/world_part_{part}.txt", "w", encoding="utf-8") as f:
+        for link in chunk:
+            f.write(link + "\n")
 
-print(f"\nГотово!")
-print(f"Российских конфигов: {total_ru}")
-print(f"Зарубежных: {total_world}")
+print("Разделение завершено.")
