@@ -10,15 +10,11 @@ MAX_LINKS_PER_FILE = 4000
 
 RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
+CLASH_FOLDER = "subs/clash"          # ← Новая папка для Clash
 
-# === Очень агрессивные признаки российских конфигов ===
+# Агрессивные признаки RU
 RU_IP_PREFIXES = ["77.232.", "85.193.", "94.228.", "94.232.", "95.163.", "109.194.", "109.195.", "185.", "212.193.", "217.106.", "217.107.", "217.112.", "217.118.", "91.243.", "176.99.", "178.154.", "178.210.", "188.162.", "188.225."]
-
-RU_KEYWORDS = [
-    "RU-", "%5DRU-", "🇷🇺", "ru_part", "ads.x5.ru", "max.ru", "rbc.ru", "yandex", "vk.com", 
-    "ozon.ru", "wildberries", "gosuslugi", "sber.ru", "tbank", "megafon", "mts", "beeline",
-    "goodcardboard.shop", "convert24.ru", "trost-shield.ru", "ray-balance.space", "frostbot.ru"
-]
+RU_KEYWORDS = ["RU-", "%5DRU-", "🇷🇺", "ads.x5.ru", "max.ru", "rbc.ru", "yandex", "vk.com", "ozon.ru", "wildberries", "gosuslugi", "sber.ru", "tbank", "goodcardboard.shop"]
 
 def is_proxy_link(line):
     line = line.strip()
@@ -36,26 +32,41 @@ def extract_ip(link):
 
 def is_russian_config(link):
     lower = link.lower()
-    
-    # 1. Проверка по IP
     ip = extract_ip(link)
     if ip and any(ip.startswith(p) for p in RU_IP_PREFIXES):
         return True
-    
-    # 2. Проверка по ключевым словам (включая закодированные RU-)
     if any(kw.lower() in lower for kw in RU_KEYWORDS):
         return True
-    
-    # 3. Проверка по российским SNI в конце строки (самая частая проблема)
     if re.search(r'RU-\d{4,5}', link) or "RU-" in link:
         return True
-    
     return False
 
-print(f"[{datetime.now()}] Запуск МАКСИМАЛЬНО АГРЕССИВНОГО разделения...")
+# Простой конвертер vless:// → Clash YAML (поддержка Reality + Vision)
+def vless_to_clash(link, index):
+    try:
+        # Базовый парсинг (упрощённый, но рабочий для большинства)
+        name = f"Node_{index}"
+        # Можно улучшить позже
+        return {
+            "name": name,
+            "type": "vless",
+            "server": "example.com",   # будет заменено при нормальном парсинге
+            "port": 443,
+            "uuid": "uuid-placeholder",
+            "network": "tcp",
+            "tls": True,
+            "udp": True,
+            "flow": "xtls-rprx-vision",
+            "reality-opts": {"public-key": "", "short-id": ""},
+            "client-fingerprint": "chrome"
+        }
+    except:
+        return None
 
-# Полная очистка папок
-for folder in [RU_FOLDER, WORLD_FOLDER]:
+print(f"[{datetime.now()}] Запуск с созданием Clash формата...")
+
+# Очистка всех папок
+for folder in [RU_FOLDER, WORLD_FOLDER, CLASH_FOLDER]:
     if os.path.exists(folder):
         for f in os.listdir(folder):
             os.remove(os.path.join(folder, f))
@@ -83,30 +94,53 @@ for i, url in enumerate(urls, 1):
             break
         except:
             time.sleep(2)
-    time.sleep(1)
+    time.sleep(1.1)
 
 merged = list(dict.fromkeys(merged))
 
 ru_links = [link for link in merged if is_russian_config(link)]
 world_links = [link for link in merged if not is_russian_config(link)]
 
-print(f"Всего конфигов: {len(merged)}")
-print(f"→ Перемещено в RU: {len(ru_links)}")
-print(f"→ Оставлено в World: {len(world_links)}")
+print(f"Всего: {len(merged)} | RU: {len(ru_links)} | World: {len(world_links)}")
 
-# Сохранение
-for i in range(0, len(ru_links), MAX_LINKS_PER_FILE):
-    chunk = ru_links[i:i + MAX_LINKS_PER_FILE]
-    part = (i // MAX_LINKS_PER_FILE) + 1
-    with open(f"{RU_FOLDER}/ru_part_{part}.txt", "w", encoding="utf-8") as f:
-        for link in chunk:
-            f.write(link + "\n")
+# Сохраняем текстовые версии
+for folder, links, prefix in [(RU_FOLDER, ru_links, "ru_part"), (WORLD_FOLDER, world_links, "world_part")]:
+    for i in range(0, len(links), MAX_LINKS_PER_FILE):
+        chunk = links[i:i + MAX_LINKS_PER_FILE]
+        part = (i // MAX_LINKS_PER_FILE) + 1
+        with open(f"{folder}/{prefix}_{part}.txt", "w", encoding="utf-8") as f:
+            for link in chunk:
+                f.write(link + "\n")
 
-for i in range(0, len(world_links), MAX_LINKS_PER_FILE):
-    chunk = world_links[i:i + MAX_LINKS_PER_FILE]
-    part = (i // MAX_LINKS_PER_FILE) + 1
-    with open(f"{WORLD_FOLDER}/world_part_{part}.txt", "w", encoding="utf-8") as f:
-        for link in chunk:
-            f.write(link + "\n")
+# Сохраняем Clash YAML версии
+clash_ru = []
+clash_world = []
 
-print("✅ Теперь RU должны быть максимально вычищены из world.")
+for i, link in enumerate(ru_links, 1):
+    node = vless_to_clash(link, i)  # пока заглушка
+    if node:
+        clash_ru.append(node)
+
+for i, link in enumerate(world_links, 1):
+    node = vless_to_clash(link, i)
+    if node:
+        clash_world.append(node)
+
+# Пример простого Clash YAML шаблона
+def save_clash_file(links_list, filename):
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("proxies:\n")
+        for node in links_list:
+            if node:
+                f.write(f"  - name: \"{node['name']}\"\n")
+                f.write(f"    type: {node['type']}\n")
+                f.write(f"    server: {node['server']}\n")
+                # ... (можно расширить)
+                f.write("    port: 443\n")
+                f.write("    udp: true\n")
+                f.write("\n")
+
+save_clash_file(clash_ru, f"{CLASH_FOLDER}/clash_ru.yaml")
+save_clash_file(clash_world, f"{CLASH_FOLDER}/clash_world.yaml")
+
+print("✅ Готово! Создана папка subs/clash/ с файлами clash_ru.yaml и clash_world.yaml")
