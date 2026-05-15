@@ -69,3 +69,4 @@ https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/OutlineVPN%2FOutlineVPN.txt
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/KvRuVPN%2FKvRuVPN.txt
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/EtoNeYa%2FEtoNeYa_wl.txt
+https://raw.githubusercontent.com/Argh94/Proxy-List/refs/heads/main/Hysteria2.txt
