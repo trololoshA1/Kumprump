@@ -2,7 +2,7 @@ name: Daily Merge Proxies
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: "0 */4 * * *"   # каждые 4 часа
   workflow_dispatch:
 
 jobs:
