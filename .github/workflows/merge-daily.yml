@@ -2,8 +2,8 @@ name: Daily Merge Proxies
 
 on:
   schedule:
-    - cron: '0 3 * * *'     # Каждый день в 3:00 UTC (6:00 по Москве)
-  workflow_dispatch:        # Можно запускать вручную
+    - cron: '0 3 * * *'     # Каждый день в 3:00 UTC
+  workflow_dispatch:
 
 jobs:
   merge:
@@ -33,9 +33,8 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Добавляем только изменённые файлы
           git add subs/ merged_subs.txt links.txt
-
+          
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
@@ -48,8 +47,10 @@ jobs:
       - name: Show statistics
         run: |
           echo "=== Статистика ==="
-          echo "RU configs: $(find subs/ru -name "*.txt" -exec cat {} + | wc -l)"
-          echo "World configs: $(find subs/world -name "*.txt" -exec cat {} + | wc -l)"
+          echo "RU configs: $(find subs/ru -name "*.txt" -exec cat {} + | wc -l 2>/dev/null || echo 0)"
+          echo "World configs: $(find subs/world -name "*.txt" -exec cat {} + | wc -l 2>/dev/null || echo 0)"
           echo "Total by type:"
           for type in vless vmess trojan hysteria2 shadowsocks tuic other; do
-            count=$(find "subs/type/$type" -name "*.txt" -exec cat {} + | wc -l 2>/dev/null
+            count=$(find "subs/type/$type" -name "*.txt" -exec cat {} + | wc -l 2>/dev/null || echo 0)
+            echo "  $type: $count"
+          done
