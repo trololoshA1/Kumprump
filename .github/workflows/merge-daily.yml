@@ -1,12 +1,9 @@
-name: Daily Mega-Sub Merge
+name: Daily Merge Proxies
 
 on:
   schedule:
-    - cron: '0 3 * * *'      # каждый день в 3:00 UTC (6:00 МСК)
-  workflow_dispatch:         # кнопка для ручного запуска
-
-permissions:
-  contents: write            # обязательно для записи файлов
+    - cron: '0 3 * * *'     # Каждый день в 3:00 UTC (6:00 по Москве)
+  workflow_dispatch:        # Можно запускать вручную
 
 jobs:
   merge:
@@ -15,29 +12,44 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests geoip2
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
-      - name: Run merger script
+      - name: Run merge script
         run: python merge_subs.py
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "MegaSub Bot"
-          git config --global user.email "bot@github.com"
-          
-          # Добавляем все новые папки с разделением
-          git add subs/
-          
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Добавляем только изменённые файлы
+          git add subs/ merged_subs.txt links.txt
+
           if git diff --staged --quiet; then
-            echo "Ничего не изменилось"
+            echo "No changes to commit"
           else
-            git commit -m "Auto-merge $(date +'%Y-%m-%d %H:%M UTC') - RU + World split"
+            git commit -m "Daily update: $(date +'%Y-%m-%d %H:%M:%S UTC')"
             git push
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show statistics
+        run: |
+          echo "=== Статистика ==="
+          echo "RU configs: $(find subs/ru -name "*.txt" -exec cat {} + | wc -l)"
+          echo "World configs: $(find subs/world -name "*.txt" -exec cat {} + | wc -l)"
+          echo "Total by type:"
+          for type in vless vmess trojan hysteria2 shadowsocks tuic other; do
+            count=$(find "subs/type/$type" -name "*.txt" -exec cat {} + | wc -l 2>/dev/null
