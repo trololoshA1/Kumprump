@@ -5,14 +5,14 @@ import re
 from datetime import datetime
 
 INPUT_FILE = "links.txt"
-MAX_LINKS_PER_FILE = 3000        # Уменьшил, чтобы файлы были меньше
-MAX_HYSTERIA2_TOTAL = 25000      # Ограничение на общее количество Hysteria2 (чтобы не рос бесконечно)
+MAX_LINKS_PER_FILE = 4000
+MAX_HYSTERIA2_PER_FILE = 100   # Специально для hysteria2
 
 RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
 
-print(f"[{datetime.now()}] 🚀 Запуск... (Hysteria2 ограничен)")
+print(f"[{datetime.now()}] 🚀 Запуск | Hysteria2 по {MAX_HYSTERIA2_PER_FILE} на файл")
 
 # Создание папок
 for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
@@ -44,7 +44,7 @@ def get_proxy_type(link: str) -> str:
 
 def is_russian_config(link: str) -> bool:
     lower = link.lower()
-    keywords = ["ru-", "🇷🇺", "russia", "moscow", "yandex", "vk.com"]
+    keywords = ["ru-", "🇷🇺", "russia", "moscow", "spb", "yandex", "vk.com", "ozon"]
     return any(k in lower for k in keywords)
 
 def load_existing_configs(folder, prefix):
@@ -92,55 +92,58 @@ for i, url in enumerate(urls, 1):
                         seen.add(fp)
                         merged.append(line)
                         added += 1
-            print(f"   + {added} новых")
+            print(f"   + {added}")
             break
         except Exception as e:
             print(f"   Ошибка {attempt+1}/3: {e}")
             time.sleep(2)
     time.sleep(1.2)
 
-print(f"\nВсего новых: {len(merged)}")
+print(f"\nВсего новых уникальных: {len(merged)}")
 
-# ===================== Обработка Hysteria2 =====================
-hysteria2_existing = load_existing_configs(f"{TYPE_FOLDER}/hysteria2", "hysteria2")
-new_hy2 = [link for link in merged if get_proxy_type(link) == "hysteria2" and link not in hysteria2_existing]
+# ===================== Разделение =====================
+ru_links = [link for link in merged if is_russian_config(link)]
+world_links = [link for link in merged if not is_russian_config(link)]
 
-all_hysteria2 = hysteria2_existing + new_hy2
-if len(all_hysteria2) > MAX_HYSTERIA2_TOTAL:
-    all_hysteria2 = all_hysteria2[-MAX_HYSTERIA2_TOTAL:]   # оставляем самые новые
+type_links = {t: [] for t in types}
+for link in merged:
+    t = get_proxy_type(link)
+    type_links[t].append(link)
 
-print(f"Hysteria2: {len(all_hysteria2)} (+{len(new_hy2)}) [ограничение {MAX_HYSTERIA2_TOTAL}]")
+# ===================== Hysteria2 — накопление + по 100 =====================
+hysteria_existing = load_existing_configs(f"{TYPE_FOLDER}/hysteria2", "hysteria2")
+new_hy2 = [link for link in type_links["hysteria2"] if link not in hysteria_existing]
+all_hysteria2 = hysteria_existing + new_hy2
+
+print(f"Hysteria2 всего: {len(all_hysteria2)} (+{len(new_hy2)})")
 
 # ===================== Сохранение =====================
-def save_chunks(links, folder, prefix):
+def save_chunks(links, folder, prefix, max_per_file):
     if not links:
         return
-    for i in range(0, len(links), MAX_LINKS_PER_FILE):
-        chunk = links[i:i + MAX_LINKS_PER_FILE]
-        part = i // MAX_LINKS_PER_FILE + 1
+    for i in range(0, len(links), max_per_file):
+        chunk = links[i:i + max_per_file]
+        part = i // max_per_file + 1
         filename = f"{folder}/{prefix}_{part}.txt"
         with open(filename, "w", encoding="utf-8") as f:
             f.write("\n".join(chunk) + "\n")
 
-# Сохраняем всё
-ru_links = [link for link in merged if is_russian_config(link)]
-world_links = [link for link in merged if not is_russian_config(link)]
+# RU / World
+save_chunks(ru_links, RU_FOLDER, "ru", MAX_LINKS_PER_FILE)
+save_chunks(world_links, WORLD_FOLDER, "world", MAX_LINKS_PER_FILE)
 
-save_chunks(ru_links, RU_FOLDER, "ru")
-save_chunks(world_links, WORLD_FOLDER, "world")
+# Hysteria2 — специальный лимит 100
+save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2", MAX_HYSTERIA2_PER_FILE)
 
-# Hysteria2 отдельно
-save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2")
-
-# Остальные типы
+# Остальные типы — 4000
 for t in types:
-    if t == "hysteria2": 
+    if t == "hysteria2":
         continue
-    links = [link for link in merged if get_proxy_type(link) == t]
-    save_chunks(links, f"{TYPE_FOLDER}/{t}", t)
+    save_chunks(type_links[t], f"{TYPE_FOLDER}/{t}", t, MAX_LINKS_PER_FILE)
 
 with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
 print("\n🎉 ГОТОВО!")
-print("Ограничение на Hysteria2 включено + файлы разбиваются на чанки.")
+print(f"Hysteria2 разбивается по {MAX_HYSTERIA2_PER_FILE} конфигов на файл")
+print(f"Остальные типы — по {MAX_LINKS_PER_FILE}")
