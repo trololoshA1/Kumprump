@@ -1,18 +1,18 @@
 import requests
 import time
+import base64
 import os
 import re
 from datetime import datetime
 
 INPUT_FILE = "links.txt"
-MAX_LINKS_PER_FILE = 4000
-MAX_HYSTERIA2_PER_FILE = 100   # Специально для hysteria2
+MAX_LINKS_PER_FILE = 4000   # теперь для всех типов, включая hysteria2
 
 RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
 
-print(f"[{datetime.now()}] 🚀 Запуск | Hysteria2 по {MAX_HYSTERIA2_PER_FILE} на файл")
+print(f"[{datetime.now()}] 🚀 Запуск | Декодирование base64 + Hysteria2 без ограничения 100")
 
 # Создание папок
 for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
@@ -22,7 +22,32 @@ types = ["vless", "vmess", "trojan", "hysteria2", "shadowsocks", "tuic", "other"
 for t in types:
     os.makedirs(f"{TYPE_FOLDER}/{t}", exist_ok=True)
 
-# ==================== ФУНКЦИИ ====================
+# ==================== ДЕКОДИРОВАНИЕ BASE64 ====================
+def decode_base64_if_needed(content: str) -> str:
+    content = content.strip()
+    if "://" in content[:300]:
+        return content
+
+    for padding in ["", "==", "=", "==="]:
+        try:
+            decoded = base64.b64decode(content + padding).decode("utf-8", errors="ignore")
+            if "://" in decoded[:500]:
+                print("   ✅ Декодировано из base64")
+                return decoded
+        except:
+            continue
+
+    try:
+        decoded = base64.urlsafe_b64decode(content + "==").decode("utf-8", errors="ignore")
+        if "://" in decoded[:500]:
+            print("   ✅ Декодировано (urlsafe base64)")
+            return decoded
+    except:
+        pass
+
+    return content
+
+
 def clean_url(url: str) -> str:
     url = re.sub(r'[\u200b\u200c\u200d\u200e\u200f\ufeff]', '', url.strip())
     return url.strip('"\' \t\n')
@@ -73,15 +98,11 @@ for i, url in enumerate(urls, 1):
     print(f"[{i}/{len(urls)}] ↓ {url[:70]}...")
     for attempt in range(3):
         try:
-            r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+            r = requests.get(url, timeout=25, headers={"User-Agent": "Mozilla/5.0"})
             r.raise_for_status()
             content = r.text
 
-            if "://" not in content[:150]:
-                try:
-                    content = base64.b64decode(content + "==").decode("utf-8", errors="ignore")
-                except:
-                    pass
+            content = decode_base64_if_needed(content)
 
             added = 0
             for line in content.splitlines():
@@ -92,12 +113,12 @@ for i, url in enumerate(urls, 1):
                         seen.add(fp)
                         merged.append(line)
                         added += 1
-            print(f"   + {added}")
+            print(f"   + {added} конфигов")
             break
         except Exception as e:
             print(f"   Ошибка {attempt+1}/3: {e}")
             time.sleep(2)
-    time.sleep(1.2)
+    time.sleep(1.3)
 
 print(f"\nВсего новых уникальных: {len(merged)}")
 
@@ -107,10 +128,9 @@ world_links = [link for link in merged if not is_russian_config(link)]
 
 type_links = {t: [] for t in types}
 for link in merged:
-    t = get_proxy_type(link)
-    type_links[t].append(link)
+    type_links[get_proxy_type(link)].append(link)
 
-# ===================== Hysteria2 — накопление + по 100 =====================
+# Hysteria2 накопление
 hysteria_existing = load_existing_configs(f"{TYPE_FOLDER}/hysteria2", "hysteria2")
 new_hy2 = [link for link in type_links["hysteria2"] if link not in hysteria_existing]
 all_hysteria2 = hysteria_existing + new_hy2
@@ -118,7 +138,7 @@ all_hysteria2 = hysteria_existing + new_hy2
 print(f"Hysteria2 всего: {len(all_hysteria2)} (+{len(new_hy2)})")
 
 # ===================== Сохранение =====================
-def save_chunks(links, folder, prefix, max_per_file):
+def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE):
     if not links:
         return
     for i in range(0, len(links), max_per_file):
@@ -128,22 +148,16 @@ def save_chunks(links, folder, prefix, max_per_file):
         with open(filename, "w", encoding="utf-8") as f:
             f.write("\n".join(chunk) + "\n")
 
-# RU / World
-save_chunks(ru_links, RU_FOLDER, "ru", MAX_LINKS_PER_FILE)
-save_chunks(world_links, WORLD_FOLDER, "world", MAX_LINKS_PER_FILE)
+save_chunks(ru_links, RU_FOLDER, "ru")
+save_chunks(world_links, WORLD_FOLDER, "world")
+save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2")
 
-# Hysteria2 — специальный лимит 100
-save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2", MAX_HYSTERIA2_PER_FILE)
-
-# Остальные типы — 4000
 for t in types:
     if t == "hysteria2":
         continue
-    save_chunks(type_links[t], f"{TYPE_FOLDER}/{t}", t, MAX_LINKS_PER_FILE)
+    save_chunks(type_links[t], f"{TYPE_FOLDER}/{t}", t)
 
 with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
-print("\n🎉 ГОТОВО!")
-print(f"Hysteria2 разбивается по {MAX_HYSTERIA2_PER_FILE} конфигов на файл")
-print(f"Остальные типы — по {MAX_LINKS_PER_FILE}")
+print("\n🎉 ГОТОВО! Hysteria2 теперь без ограничения в 100, по 4000 на файл.")
