@@ -6,13 +6,14 @@ import re
 from datetime import datetime
 
 INPUT_FILE = "links.txt"
-MAX_LINKS_PER_FILE = 4000   # теперь для всех типов, включая hysteria2
+MAX_LINKS_PER_FILE = 4000
+MAX_HYSTERIA2_SIZE_MB = 90   # ← Основное ограничение
 
 RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
 
-print(f"[{datetime.now()}] 🚀 Запуск | Декодирование base64 + Hysteria2 без ограничения 100")
+print(f"[{datetime.now()}] 🚀 Запуск | Hysteria2 ограничен \~{MAX_HYSTERIA2_SIZE_MB} MB на файл")
 
 # Создание папок
 for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
@@ -36,15 +37,13 @@ def decode_base64_if_needed(content: str) -> str:
                 return decoded
         except:
             continue
-
     try:
         decoded = base64.urlsafe_b64decode(content + "==").decode("utf-8", errors="ignore")
         if "://" in decoded[:500]:
-            print("   ✅ Декодировано (urlsafe base64)")
+            print("   ✅ Декодировано (urlsafe)")
             return decoded
     except:
         pass
-
     return content
 
 
@@ -100,9 +99,7 @@ for i, url in enumerate(urls, 1):
         try:
             r = requests.get(url, timeout=25, headers={"User-Agent": "Mozilla/5.0"})
             r.raise_for_status()
-            content = r.text
-
-            content = decode_base64_if_needed(content)
+            content = decode_base64_if_needed(r.text)
 
             added = 0
             for line in content.splitlines():
@@ -122,7 +119,7 @@ for i, url in enumerate(urls, 1):
 
 print(f"\nВсего новых уникальных: {len(merged)}")
 
-# ===================== Разделение =====================
+# Разделение
 ru_links = [link for link in merged if is_russian_config(link)]
 world_links = [link for link in merged if not is_russian_config(link)]
 
@@ -137,27 +134,56 @@ all_hysteria2 = hysteria_existing + new_hy2
 
 print(f"Hysteria2 всего: {len(all_hysteria2)} (+{len(new_hy2)})")
 
-# ===================== Сохранение =====================
-def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE):
+# ===================== УМНОЕ СОХРАНЕНИЕ =====================
+def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE, max_size_mb=None):
     if not links:
         return
-    for i in range(0, len(links), max_per_file):
-        chunk = links[i:i + max_per_file]
-        part = i // max_per_file + 1
-        filename = f"{folder}/{prefix}_{part}.txt"
-        with open(filename, "w", encoding="utf-8") as f:
-            f.write("\n".join(chunk) + "\n")
+    if max_size_mb is None:
+        # Обычное сохранение
+        for i in range(0, len(links), max_per_file):
+            chunk = links[i:i + max_per_file]
+            part = i // max_per_file + 1
+            filename = f"{folder}/{prefix}_{part}.txt"
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write("\n".join(chunk) + "\n")
+    else:
+        # Для Hysteria2 — контроль размера
+        current_chunk = []
+        file_part = 1
+        for link in links:
+            current_chunk.append(link)
+            # Примерная оценка размера (1 строка ≈ 300-400 байт)
+            estimated_size = len("\n".join(current_chunk)) / (1024 * 1024)
+            if estimated_size > max_size_mb or len(current_chunk) >= max_per_file:
+                filename = f"{folder}/{prefix}_{file_part}.txt"
+                with open(filename, "w", encoding="utf-8") as f:
+                    f.write("\n".join(current_chunk) + "\n")
+                print(f"   → {filename} ({estimated_size:.1f} MB)")
+                current_chunk = []
+                file_part += 1
+        # Последний чанк
+        if current_chunk:
+            filename = f"{folder}/{prefix}_{file_part}.txt"
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write("\n".join(current_chunk) + "\n")
+            print(f"   → {filename} ({len('\n'.join(current_chunk))/(1024*1024):.1f} MB)")
 
+# Сохранение
 save_chunks(ru_links, RU_FOLDER, "ru")
 save_chunks(world_links, WORLD_FOLDER, "world")
-save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2")
 
+# Hysteria2 с ограничением размера
+save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2", 
+            max_per_file=MAX_LINKS_PER_FILE, max_size_mb=MAX_HYSTERIA2_SIZE_MB)
+
+# Остальные типы
 for t in types:
-    if t == "hysteria2":
+    if t == "hysteria2": 
         continue
     save_chunks(type_links[t], f"{TYPE_FOLDER}/{t}", t)
 
 with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
-print("\n🎉 ГОТОВО! Hysteria2 теперь без ограничения в 100, по 4000 на файл.")
+print("\n🎉 ГОТОВО!")
+print(f"Hysteria2 ограничен примерно {MAX_HYSTERIA2_SIZE_MB} MB на файл")
