@@ -4,6 +4,7 @@ import base64
 import os
 import re
 from datetime import datetime
+from urllib.parse import urlparse, parse_qs
 
 INPUT_FILE = "links.txt"
 MAX_LINKS_PER_FILE = 4000
@@ -13,7 +14,7 @@ RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
 
-print(f"[{datetime.now()}] 🚀 Запуск | Полная очистка Hysteria2 + накопление")
+print(f"[{datetime.now()}] 🚀 Запуск Вариант А | Накопление Hysteria2")
 
 # Создание папок
 for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
@@ -22,6 +23,39 @@ for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
 types = ["vless", "vmess", "trojan", "hysteria2", "shadowsocks", "tuic", "other"]
 for t in types:
     os.makedirs(f"{TYPE_FOLDER}/{t}", exist_ok=True)
+
+# ==================== УДАЛЕНИЕ ТОЛЬКО BASE64 ФАЙЛОВ ====================
+def cleanup_old_b64_files():
+    folder = f"{TYPE_FOLDER}/hysteria2"
+    if not os.path.exists(folder):
+        return
+    deleted = 0
+    for file in list(os.listdir(folder)):
+        if "_b64" in file.lower():
+            try:
+                os.remove(os.path.join(folder, file))
+                deleted += 1
+            except:
+                pass
+    if deleted > 0:
+        print(f"🗑 Удалено {deleted} старых base64 файлов")
+
+# ==================== УЛУЧШЕННАЯ ДЕДУПЛИКАЦИЯ ====================
+def get_fingerprint(link: str) -> str:
+    link = link.strip()
+    try:
+        if "hysteria2://" in link or "hy2://" in link:
+            # Для Hysteria2 используем более надёжный ключ
+            parsed = urlparse(link)
+            hostname = parsed.hostname or ""
+            port = parsed.port or ""
+            auth = parsed.username or parsed.path.split("?")[0].split("/")[0]
+            return f"hy2:{auth}@{hostname}:{port}"
+        else:
+            # Для остальных — первые 150 символов
+            return link[:150]
+    except:
+        return link[:150]
 
 # ==================== ДЕКОДИРОВАНИЕ BASE64 ====================
 def decode_base64_if_needed(content: str) -> str:
@@ -32,49 +66,40 @@ def decode_base64_if_needed(content: str) -> str:
     for padding in ["", "==", "=", "==="]:
         try:
             decoded = base64.b64decode(content + padding).decode("utf-8", errors="ignore")
-            if "hysteria2://" in decoded.lower() or "hy2://" in decoded.lower():
+            if "://" in decoded[:400]:
+                print("   ✅ Декодировано из base64")
                 return decoded
         except:
             continue
     try:
         decoded = base64.urlsafe_b64decode(content + "==").decode("utf-8", errors="ignore")
-        if "hysteria2://" in decoded.lower() or "hy2://" in decoded.lower():
+        if "://" in decoded[:400]:
+            print("   ✅ Декодировано (urlsafe)")
             return decoded
     except:
         pass
     return content
 
-# ==================== ПОЛНАЯ ОЧИСТКА ПАПКИ HYSTERIA2 ====================
-def cleanup_hysteria2_folder():
-    folder = f"{TYPE_FOLDER}/hysteria2"
-    if not os.path.exists(folder):
-        return
-    deleted = 0
-    for file in list(os.listdir(folder)):
-        try:
-            os.remove(os.path.join(folder, file))
-            deleted += 1
-        except:
-            pass
-    print(f"🗑 Удалено {deleted} старых файлов в hysteria2/")
-
 # ==================== ЗАГРУЗКА СТАРЫХ HYSTERIA2 ====================
 def load_existing_hysteria2():
     folder = f"{TYPE_FOLDER}/hysteria2"
     configs = []
+    seen = set()
     if not os.path.exists(folder):
         return configs
-    for file in os.listdir(folder):
+    for file in sorted(os.listdir(folder)):
         if not file.endswith(".txt"):
             continue
         try:
             with open(f"{folder}/{file}", "r", encoding="utf-8", errors="ignore") as f:
-                content = f.read()
-                decoded = decode_base64_if_needed(content)
-                for line in decoded.splitlines():
+                content = decode_base64_if_needed(f.read())
+                for line in content.splitlines():
                     line = line.strip()
                     if line and ("hysteria2://" in line.lower() or "hy2://" in line.lower()):
-                        configs.append(line)
+                        fp = get_fingerprint(line)
+                        if fp not in seen:
+                            seen.add(fp)
+                            configs.append(line)
         except:
             continue
     return configs
@@ -105,7 +130,7 @@ def is_russian_config(link: str) -> bool:
     return any(k in lower for k in keywords)
 
 # ===================== ЗАПУСК =====================
-cleanup_hysteria2_folder()   # Полная очистка перед работой
+cleanup_old_b64_files()
 
 with open(INPUT_FILE, "r", encoding="utf-8", errors="ignore") as f:
     urls = [clean_url(line) for line in f if clean_url(line) and not clean_url(line).startswith("#")]
@@ -127,12 +152,12 @@ for i, url in enumerate(urls, 1):
             for line in content.splitlines():
                 line = line.strip()
                 if is_proxy_link(line):
-                    fp = line[:120]
+                    fp = get_fingerprint(line)
                     if fp not in seen:
                         seen.add(fp)
                         merged.append(line)
                         added += 1
-            print(f"   + {added} конфигов")
+            print(f"   + {added} новых")
             break
         except Exception as e:
             print(f"   Ошибка {attempt+1}/3: {e}")
@@ -141,12 +166,12 @@ for i, url in enumerate(urls, 1):
 
 print(f"\nВсего новых уникальных: {len(merged)}")
 
-# ===================== Hysteria2 накопление =====================
+# ===================== Накопление Hysteria2 =====================
 old_hy = load_existing_hysteria2()
-new_hy = [link for link in merged if get_proxy_type(link) == "hysteria2" and link not in old_hy]
+new_hy = [link for link in merged if get_proxy_type(link) == "hysteria2" and get_fingerprint(link) not in [get_fingerprint(x) for x in old_hy]]
 all_hysteria2 = old_hy + new_hy
 
-print(f"Hysteria2 всего после накопления: {len(all_hysteria2)} (+{len(new_hy)})")
+print(f"Hysteria2: {len(all_hysteria2)} всего (+{len(new_hy)} новых)")
 
 # ===================== Сохранение =====================
 def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE, max_size_mb=None):
@@ -189,4 +214,4 @@ for t in types:
 with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
-print("\n🎉 ГОТОВО! Hysteria2 полностью очищен и обновлён в нормальном формате.")
+print("\n🎉 ГОТОВО! Накопление восстановлено.")
