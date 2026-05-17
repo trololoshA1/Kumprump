@@ -13,7 +13,7 @@ RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
 
-print(f"[{datetime.now()}] 🚀 Запуск | Hysteria2 ≤ {MAX_HYSTERIA2_SIZE_MB} MB на файл")
+print(f"[{datetime.now()}] 🚀 Запуск | Полная очистка Hysteria2 + накопление")
 
 # Создание папок
 for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
@@ -32,21 +32,54 @@ def decode_base64_if_needed(content: str) -> str:
     for padding in ["", "==", "=", "==="]:
         try:
             decoded = base64.b64decode(content + padding).decode("utf-8", errors="ignore")
-            if "://" in decoded[:500]:
-                print("   ✅ Декодировано из base64")
+            if "hysteria2://" in decoded.lower() or "hy2://" in decoded.lower():
                 return decoded
         except:
             continue
     try:
         decoded = base64.urlsafe_b64decode(content + "==").decode("utf-8", errors="ignore")
-        if "://" in decoded[:500]:
-            print("   ✅ Декодировано (urlsafe)")
+        if "hysteria2://" in decoded.lower() or "hy2://" in decoded.lower():
             return decoded
     except:
         pass
     return content
 
+# ==================== ПОЛНАЯ ОЧИСТКА ПАПКИ HYSTERIA2 ====================
+def cleanup_hysteria2_folder():
+    folder = f"{TYPE_FOLDER}/hysteria2"
+    if not os.path.exists(folder):
+        return
+    deleted = 0
+    for file in list(os.listdir(folder)):
+        try:
+            os.remove(os.path.join(folder, file))
+            deleted += 1
+        except:
+            pass
+    print(f"🗑 Удалено {deleted} старых файлов в hysteria2/")
 
+# ==================== ЗАГРУЗКА СТАРЫХ HYSTERIA2 ====================
+def load_existing_hysteria2():
+    folder = f"{TYPE_FOLDER}/hysteria2"
+    configs = []
+    if not os.path.exists(folder):
+        return configs
+    for file in os.listdir(folder):
+        if not file.endswith(".txt"):
+            continue
+        try:
+            with open(f"{folder}/{file}", "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read()
+                decoded = decode_base64_if_needed(content)
+                for line in decoded.splitlines():
+                    line = line.strip()
+                    if line and ("hysteria2://" in line.lower() or "hy2://" in line.lower()):
+                        configs.append(line)
+        except:
+            continue
+    return configs
+
+# ==================== ОСНОВНЫЕ ФУНКЦИИ ====================
 def clean_url(url: str) -> str:
     url = re.sub(r'[\u200b\u200c\u200d\u200e\u200f\ufeff]', '', url.strip())
     return url.strip('"\' \t\n')
@@ -58,10 +91,10 @@ def is_proxy_link(line: str) -> bool:
 
 def get_proxy_type(link: str) -> str:
     lower = link.lower()
+    if lower.startswith(("hysteria2://", "hy2://")): return "hysteria2"
     if lower.startswith("vless://"): return "vless"
     if lower.startswith("vmess://"): return "vmess"
     if lower.startswith("trojan://"): return "trojan"
-    if lower.startswith(("hysteria2://", "hy2://")): return "hysteria2"
     if lower.startswith("ss://"): return "shadowsocks"
     if lower.startswith("tuic://"): return "tuic"
     return "other"
@@ -71,20 +104,9 @@ def is_russian_config(link: str) -> bool:
     keywords = ["ru-", "🇷🇺", "russia", "moscow", "spb", "yandex", "vk.com", "ozon"]
     return any(k in lower for k in keywords)
 
-def load_existing_configs(folder, prefix):
-    configs = []
-    if not os.path.exists(folder):
-        return configs
-    for file in sorted(os.listdir(folder)):
-        if file.startswith(prefix) and file.endswith(".txt"):
-            try:
-                with open(f"{folder}/{file}", "r", encoding="utf-8") as f:
-                    configs.extend([line.strip() for line in f if line.strip()])
-            except:
-                pass
-    return configs
+# ===================== ЗАПУСК =====================
+cleanup_hysteria2_folder()   # Полная очистка перед работой
 
-# ===================== Скачивание =====================
 with open(INPUT_FILE, "r", encoding="utf-8", errors="ignore") as f:
     urls = [clean_url(line) for line in f if clean_url(line) and not clean_url(line).startswith("#")]
 
@@ -105,7 +127,7 @@ for i, url in enumerate(urls, 1):
             for line in content.splitlines():
                 line = line.strip()
                 if is_proxy_link(line):
-                    fp = line[:100]
+                    fp = line[:120]
                     if fp not in seen:
                         seen.add(fp)
                         merged.append(line)
@@ -119,74 +141,52 @@ for i, url in enumerate(urls, 1):
 
 print(f"\nВсего новых уникальных: {len(merged)}")
 
-# Разделение
-ru_links = [link for link in merged if is_russian_config(link)]
-world_links = [link for link in merged if not is_russian_config(link)]
+# ===================== Hysteria2 накопление =====================
+old_hy = load_existing_hysteria2()
+new_hy = [link for link in merged if get_proxy_type(link) == "hysteria2" and link not in old_hy]
+all_hysteria2 = old_hy + new_hy
 
-type_links = {t: [] for t in types}
-for link in merged:
-    type_links[get_proxy_type(link)].append(link)
-
-# Hysteria2 накопление
-hysteria_existing = load_existing_configs(f"{TYPE_FOLDER}/hysteria2", "hysteria2")
-new_hy2 = [link for link in type_links["hysteria2"] if link not in hysteria_existing]
-all_hysteria2 = hysteria_existing + new_hy2
-
-print(f"Hysteria2 всего: {len(all_hysteria2)} (+{len(new_hy2)})")
+print(f"Hysteria2 всего после накопления: {len(all_hysteria2)} (+{len(new_hy)})")
 
 # ===================== Сохранение =====================
 def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE, max_size_mb=None):
     if not links:
         return
-    if max_size_mb is None:
-        # Обычные типы
-        for i in range(0, len(links), max_per_file):
-            chunk = links[i:i + max_per_file]
-            part = i // max_per_file + 1
+    current = []
+    part = 1
+    for link in links:
+        current.append(link)
+        size_mb = len("\n".join(current).encode('utf-8')) / (1024*1024)
+        
+        if (max_size_mb and size_mb > max_size_mb) or len(current) >= max_per_file:
             filename = f"{folder}/{prefix}_{part}.txt"
             with open(filename, "w", encoding="utf-8") as f:
-                f.write("\n".join(chunk) + "\n")
-    else:
-        # Hysteria2 — контроль по размеру
-        current_chunk = []
-        file_part = 1
-        for link in links:
-            current_chunk.append(link)
-            current_text = "\n".join(current_chunk)
-            size_mb = len(current_text) / (1024 * 1024)
-            
-            if size_mb > max_size_mb or len(current_chunk) >= max_per_file:
-                filename = f"{folder}/{prefix}_{file_part}.txt"
-                with open(filename, "w", encoding="utf-8") as f:
-                    f.write(current_text + "\n")
-                print(f"   → {filename} ({size_mb:.1f} MB)")
-                current_chunk = []
-                file_part += 1
-        
-        # Последний чанк
-        if current_chunk:
-            filename = f"{folder}/{prefix}_{file_part}.txt"
-            current_text = "\n".join(current_chunk)
-            size_mb = len(current_text) / (1024 * 1024)
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write(current_text + "\n")
+                f.write("\n".join(current) + "\n")
             print(f"   → {filename} ({size_mb:.1f} MB)")
+            current = []
+            part += 1
+
+    if current:
+        filename = f"{folder}/{prefix}_{part}.txt"
+        size_mb = len("\n".join(current).encode('utf-8')) / (1024*1024)
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write("\n".join(current) + "\n")
+        print(f"   → {filename} ({size_mb:.1f} MB)")
 
 # Сохранение
+ru_links = [link for link in merged if is_russian_config(link)]
+world_links = [link for link in merged if not is_russian_config(link)]
+
 save_chunks(ru_links, RU_FOLDER, "ru")
 save_chunks(world_links, WORLD_FOLDER, "world")
+save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2", max_size_mb=MAX_HYSTERIA2_SIZE_MB)
 
-# Hysteria2 с ограничением размера
-save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2", 
-            max_per_file=MAX_LINKS_PER_FILE, max_size_mb=MAX_HYSTERIA2_SIZE_MB)
-
-# Остальные типы
 for t in types:
-    if t == "hysteria2":
-        continue
-    save_chunks(type_links[t], f"{TYPE_FOLDER}/{t}", t)
+    if t == "hysteria2": continue
+    links = [link for link in merged if get_proxy_type(link) == t]
+    save_chunks(links, f"{TYPE_FOLDER}/{t}", t)
 
 with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
-print("\n🎉 ГОТОВО!")
+print("\n🎉 ГОТОВО! Hysteria2 полностью очищен и обновлён в нормальном формате.")
