@@ -70,3 +70,10 @@ https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/KvRuVPN%2FKvRuVPN.txt
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/EtoNeYa%2FEtoNeYa_wl.txt
 https://raw.githubusercontent.com/Argh94/Proxy-List/refs/heads/main/Hysteria2.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_1.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_2.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_3.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_4.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_5.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_6.txt
+https://raw.githubusercontent.com/trololoshA1/Kumprump/ab5aa5fa1d7132ee9c4379b32279945277a6bf0c/subs/type/hysteria2/hysteria2_7.txt
