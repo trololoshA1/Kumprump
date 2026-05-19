@@ -298,3 +298,4 @@ hysteria2://dongtaiwang.com@157.254.223.43:27921?sni=www.bing.com&insecure=1#%F0
 hysteria2://Yet-Another-Public-Config-1@181.214.231.226:36400?obfs=salamander&obfs-password=Yet-Another-Public-Config-1&sni=YAPC-1.afshin.ir#
 hy2://qQe1z5kU8kN6SlKnDt9Ru3Qp@13.233.127.26:443/?insecure=1&sni=https://t.me/WangCai2🇨🇳#🇮🇳IN_@WangCai_8
 hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-kr-002.fastervpn.world:443?insecure=1&sni=vpn-kr-002.fastervpn.world#%F0%9F%87%B0%F0%9F%87%B7KR_1%7C1.4MB/s
+hy2://qQe1z5kU8kN6SlKnDt9Ru3Qp@13.233.132.27:443/?insecure=1&sni=https://t.me/WangCai2🇨🇳#🇮🇳IN_@WangCai_8
