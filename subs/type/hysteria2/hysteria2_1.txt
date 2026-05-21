@@ -329,3 +329,9 @@ hysteria2://2543bbe1-baba-45ab-b56f-5434887c3e61@1.161.52.121:26789?insecure=1&s
 hysteria2://2543bbe1-baba-45ab-b56f-5434887c3e61@1.161.52.121:30615?insecure=1&sni=mx-cn9t.yuetong.online&mport=20000-40000#%F0%9F%87%A8%F0%9F%87%B3%20%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90%3Adafei.de%20%E5%8F%B0%E6%B9%BE%2010
 hysteria2://2543bbe1-baba-45ab-b56f-5434887c3e61@45.130.166.185:24363?insecure=1&sni=net-64.yuetong.online&mport=20000-40000#%F0%9F%87%AF%F0%9F%87%B5%20%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90%3Adafei.de%20%E6%97%A5%E6%9C%AC%2004
 hysteria2://github.com/Alvin9999-newpac/fanqiang@178.18.147.66:29900?insecure=1&sni=www.microsoft.com#NL_2%7C1.2MB%2Fs
+hysteria2://8d9ddfb4-7583-45b3-acf1-5343db385a38@sg11.352343.cc:8080?sni=sg11.352343.cc&insecure=0#SG   HYSTERIA2-TCP-NTLS - AMAZON-02  52.220.61.16
+hysteria2://033634aa-43d9-4fc1-ab30-c2e28bb2e607@cdntw.xhl666.top:13456?insecure=1&sni=cdntw.xhl666.top#%F0%9F%87%B9%F0%9F%87%BC%20Taiwan%2C%20Taipei%20%7C%20%F0%9F%8C%90%20%7C%20%5BIPv6%5D%20%7C%20%5BBL%5D
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-us-003.fastervpn.world:443?sni=vpn-us-003.fastervpn.world&insecure=1#US   HYSTERIA2-TCP-NTLS - AMAZON-02  18.117.154.149
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-sg-001.fastervpn.world:443?sni=vpn-sg-001.fastervpn.world&insecure=1#SG   HYSTERIA2-TCP-NTLS - AMAZON-02  13.212.203.223
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-jp-002.fastervpn.world:443?sni=vpn-jp-002.fastervpn.world&insecure=1#JP   HYSTERIA2-TCP-NTLS - AMAZON-02  13.114.233.162
+hysteria2://strong-secret-pass-777@45.12.134.57:444?sni=www.microsoft.com&insecure=1&obfs=salamander#CY   HYSTERIA2-TCP-NTLS - Pq Hosting Plus S.r.l.  45.12.134.57
