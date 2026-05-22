@@ -1,3 +1,5 @@
+vless://badc7a4a-073f-30e3-2e61-8b089a068c36@18.192.134.185:443?type=tcp&encryption=none&security=none#@v2rayng_vpn403
+vless://badc7a4a-073f-30e3-2e61-8b089a068c36@18.192.95.247:443?security=none&encryption=none&headerType=none&type=tcp#@i10VPN - Psiphon 85
 vless://bbc68258-173b-4f0f-b126-f7aac6bb2db3@adler-1g.adelshoop.net:80?path=/&security=none&encryption=none&type=ws#@Proxy_Vpney (2)
 vless://bbc68258-173b-4f0f-b126-f7aac6bb2db3@adler-1g.adelshoop.net:80?type=ws&path=/&security=none#Confixio@
 vless://bbdcbf40-b587-49ae-9d72-cbbe0df161ca@snapp.ir:80?type=ws&security=none&path=/&host=derakhshan.molvliafor.ir#@GOLD_VPN_IR
@@ -3996,5 +3998,3 @@ vless://c46e9a8a-226e-4cc2-aeff-31c774e1e4f9@172.66.47.182:443?security=tls&sni=
 vless://5a2f17fc-5b8e-4091-8754-6e5783f335c9@104.21.220.87:80?security=none&type=ws&host=bia-to-channel4.unlimiteddev.shop&path=%2F# VL-WS-NONE  NA-104.21.220.87:80
 vless://2928d83a-ca75-4d52-b437-fa78c7601378@104.20.21.91:443?security=tls&sni=freedom-1rj.pages.dev&type=ws&host=freedom-1rj.pages.dev&path=%2Ffreedom-1rj.pages.dev%2F%3Fed%3D2560&fp=randomized# VL-WS-TLS  NA-104.20.21.91:443
 vless://48198295-b7ba-4b5c-8d85-085d55a6c869@69.84.182.145:443?security=tls&sni=as.ylks.xyz&type=ws&path=%2Fblue# VL-WS-TLS  US-69.84.182.145:443
-vless://2928d83a-ca75-4d52-b437-fa78c7601378@104.20.20.123:443?security=tls&sni=freedom-1rj.pages.dev&type=ws&host=freedom-1rj.pages.dev&path=%2Ffreedom-1rj.pages.dev%2F%3Fed%3D2560&fp=randomized# VL-WS-TLS  NA-104.20.20.123:443
-vless://48198295-b7ba-4b5c-8d85-085d55a6c869@198.41.208.147:443?security=tls&sni=aj.ylks.xyz&type=ws&host=aj.ylks.xyz&path=%2F%3Fed%3D2048# VL-WS-TLS  NA-198.41.208.147:443
