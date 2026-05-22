@@ -341,3 +341,7 @@ hysteria2://8vX6A657pl@31.59.39.192:500?headerType=none&encryption=none&sni=www.
 hysteria2://hysteria2_fastlane_uztzycabm%3APa22jzTs4idqco2hE18irkepEte8ThMa@144.31.135.204:1935?headerType=none&encryption=none&sni=nl2.h.fastlanehosting.ru&insecure=1#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Amsterdam-Centrum%29%20%7C%20%5BBL%5D
 hysteria2://2d4bb251-5a5a-49d2-bc8a-9a530788fd89@de.ktmurl.club:18383?sni=de.ktmurl.club&insecure=1#%F0%9F%87%A9%F0%9F%87%AA%20Germany%2C%20Frankfurt%20am%20Main%20%7C%20%5BBL%5D
 hysteria2://channel:HYyx9NmF3xpDbdyVP5hd@fi2.alexanderoff.ru:443?sni=fi2.alexanderoff.ru&insecure=0#
+hysteria2://Stpd-CO_tjcHIzXeMGM46otUpn7Ktk7W@multi.fresedvpn.site:51443?headerType=none&encryption=none&sni=multi.fresedvpn.site&insecure=0#%F0%9F%87%AB%F0%9F%87%B7%20France%20%5B%2ACIDR%5D
+hysteria2://Stpd-CO_tjcHIzXeMGM46otUpn7Ktk7W@multi.fresedvpn.site:41443?headerType=none&encryption=none&sni=multi.fresedvpn.site&insecure=0#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%5B%2ACIDR%5D
+hysteria2://channel%3AHYyx9NmF3xpDbdyVP5hd@fi2.alexanderoff.ru:443?headerType=none&encryption=none&sni=fi2.alexanderoff.ru&insecure=0#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
+hysteria2://8lXLWMYC7o@132.243.221.180:500?headerType=none&encryption=none&sni=www.amd.com&insecure=1#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%7C%20%5BBL%5D
