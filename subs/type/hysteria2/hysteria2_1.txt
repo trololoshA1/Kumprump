@@ -345,3 +345,4 @@ hysteria2://Stpd-CO_tjcHIzXeMGM46otUpn7Ktk7W@multi.fresedvpn.site:51443?headerTy
 hysteria2://Stpd-CO_tjcHIzXeMGM46otUpn7Ktk7W@multi.fresedvpn.site:41443?headerType=none&encryption=none&sni=multi.fresedvpn.site&insecure=0#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%7C%20%F0%9F%8C%90%20%5B%2ACIDR%5D
 hysteria2://channel%3AHYyx9NmF3xpDbdyVP5hd@fi2.alexanderoff.ru:443?headerType=none&encryption=none&sni=fi2.alexanderoff.ru&insecure=0#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
 hysteria2://8lXLWMYC7o@132.243.221.180:500?headerType=none&encryption=none&sni=www.amd.com&insecure=1#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%7C%20%5BBL%5D
+hysteria2://strong-secret-pass-777@45.82.245.37:444?insecure=1&sni=www.microsoft.com&obfs=salamander&obfs-password=cry_me_a_r1ver_2026#%F0%9F%87%A8%F0%9F%87%BECY_1%7C1.7MB/s
