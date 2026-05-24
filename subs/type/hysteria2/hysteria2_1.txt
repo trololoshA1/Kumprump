@@ -503,3 +503,25 @@ hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60018?insecure=1
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60041?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60042?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ♠️
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.92.218.132:443?sni=holz6.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%5B%2ACIDR%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@152.89.253.116:443?sni=holz9.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Aubervilliers%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.139.157:443?sni=holz7.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Aubervilliers%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.139.87:443?sni=holz8.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Aubervilliers%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@162.217.249.116:443?sni=suprim10.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@162.217.249.128:443?sni=suprim2.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@162.217.249.137:443?sni=suprim5.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@162.217.249.51:443?sni=suprim9.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.136.120:443?sni=suprim7.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.136.125:443?sni=suprim1.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.136.197:443?sni=suprim3.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.136.225:443?sni=suprim4.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.136.246:443?sni=suprim6.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.67.136.93:443?sni=suprim8.api3-max.ru&pinSHA256=chrome#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%28Westpoort%29%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@217.179.6.102:443?sni=holz4.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@217.179.6.105:443?sni=holz2.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@217.179.6.54:443?sni=holz1.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@217.179.6.71:443?sni=holz5.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@217.179.6.75:443?sni=holz10.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ♦️
+hysteria2://channel:Bu3eNYc5efAmgnWkbG9w@fiv4.alexanderoff.ru:443?sni=fiv4.alexanderoff.ru&insecure=0#
+hysteria2://new:5U2kfHM5JHqqJE5j3cKA@fi2.alexanderoff.ru:443?sni=fi2.alexanderoff.ru&insecure=0#
