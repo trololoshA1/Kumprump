@@ -1,3 +1,27 @@
+vless://2fb8808b-b94c-42ea-9dd2-cd77d2efcc8d@104.18.32.47:443?path=%2FeyJqdW5rIjoidDZLaDRBMWhpIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ%3D%3D%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&host=digikalaa.dpdns.org&fp=chrome&type=ws&sni=DiGIkALaA.dpdns.ORG#Join+Telegram:@Farah_VPN
+vless://09fc1b02-c13b-4b54-ab86-21a7786cb38c@snapp.ir:80?path=/&security=none&encryption=none&host=derakhshan.molvliafor.ir&type=ws#Join+Telegram:@Farah_VPN
+vless://895a39fb-6c32-49af-b04d-efecc1f6c5fb@206.189.135.13:41856?security=none&encryption=none&headerType=none&type=tcp#Join+Telegram:@Farah_VPN
+vless://cf774cf1-b15d-453c-8639-4d408cedbc0f@:80?path=/&security=none&encryption=none&type=ws#Join+Telegram:@Farah_VPN
+vless://8a07740f-b932-4372-a3a2-ed91f184cd33@chatgpt.com:443?path=%2FeyJqdW5rIjoiNDBNWGY3Z0NPd0loZ2YiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119%3Fed%3D2560&security=tls&encryption=none&insecure=0&host=khamenei.dpdns.org&fp=chrome&type=ws&allowInsecure=0&sni=KhAmeneI.DPdNs.OrG#Join+Telegram:@Farah_VPN
+vless://fef4a93d-eb4f-4657-b56b-32a0dc060045@nodejs.org:443?path=/&security=tls&encryption=none&insecure=0&host=dev.nestandneighbours.com&type=ws&allowInsecure=0&sni=dev.nestandneighbours.com#Join+Telegram:@Farah_VPN
+vless://36383965-3964-4632-b564-353361383462@185.143.232.149:80?path=/l/w/aXD2QyDdS6vRQpxs?ed=2047&security=&encryption=none&host=dl.tgmovie.bond&type=ws#Join+Telegram:@Farah_VPN
+vless://85df0ad4-8818-4aa5-9799-4bb7232de9e0@ip3-fast.tyryqyserver.ir:80?path=/?ed=2052&security=none&encryption=none&host=tamamde1.global.ssl.fastly.net&type=ws#Join+Telegram:@Farah_VPN
+vless://b43a13be-150c-4a6a-8501-b71c1b6476fb@srv186.towersflowerss.com:64534?type=ws&headerType=none&security=none&encryption=none&fp=chrome&path=/#Join+Telegram:@Farah_VPN
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@5.10.247.43:443?ed=2560&eh=Sec-WebSocket-Protocol&encryption=none&host=sni.111000.cc.cd&path=%2F%3Fhttps%253A%252F%252Ft.me%252Fwangcai2%25F0%259F%2587%25A8%25F0%259F%2587%25B3%3D&security=tls&sni=sni.111000.cc.cd&type=ws#Join+Telegram:@Farah_VPN
+vless://ad4a9f40-4309-4442-b0fb-439e295e837e@www.anten.ir:8080?type=ws&security=none&path=/mos&host=mostara.restaurantstudio.ir#Join+Telegram:@Farah_VPN
+vless://73bcd72f-9545-4cb8-8daf-7d004501880d@172.67.76.40:2087?encryption=none&host=mybloh.ccwu.cc&path=%2F&security=tls&sni=mybloh.ccwu.cc&type=ws#Join+Telegram:@Farah_VPN
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@193.176.190.183:443?ed=2560&eh=Sec-WebSocket-Protocol&encryption=none&host=sni.111000.dns.army&path=%2F%3Fhttps%253A%252F%252Ft.me%252FWangCai2%25F0%259F%2587%25A8%25F0%259F%2587%25B3%3D&security=tls&sni=sni.111000.dns.army&type=ws#Join+Telegram:@Farah_VPN
+vless://78c5b6bd-1cb6-463c-bcba-9f17ef70c85b@104.18.13.229:8880?encryption=none&host=square-frost-8d11.9660004.workers.dev&path=/&security=none&type=ws#Join+Telegram:@Farah_VPN
+vless://cbb94bf1-02cc-46ba-bc01-061b5f38e0ac@31.56.205.56:13612?path=%2F&security=none&encryption=none&type=ws#Join+Telegram:@Farah_VPN
+vless://87a09075-f5f0-4ff9-80df-3e81fcdfd10d@185.143.234.235:80?path=/&security=none&encryption=none&host=d.nsa03.com&type=ws#Join+Telegram:@Farah_VPN
+vless://fafd6a83-06eb-4199-bc69-bd447f420e08@arvancloud.ir:80?path=@TunizoNET&security=none&encryption=none&host=ri.amirenzohost.ir&type=ws#Join+Telegram:@Farah_VPN
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@209.102.207.162:443?encryption=none&host=sni.111000.indevs.in&security=tls&sni=sni.111000.indevs.in&type=ws#Join+Telegram:@Farah_VPN
+vless://c00d2f7d-666a-413a-860a-58d651d193cd@185.143.233.122:2086?path=/&security=none&encryption=none&host=netkh.zivian.ir&type=ws#Join+Telegram:@Farah_VPN
+vless://671b3057-1117-42e8-96c7-445e64e0d2d0@snapp.ir:80?path=/&security=none&encryption=none&host=soraneo.ir&type=ws#Join+Telegram:@Farah_VPN
+vless://faa634db-ac40-48b7-92cc-28c763312b8a@87.248.152.98:2052?security=none&type=ws&host=vip.degeristcs.ir&path=/#Join+Telegram:@Farah_VPN
+vless://84a8c458-72e8-4ad3-a2c3-17a1e3f9e399@snapp.ir:80?path=/&security=none&encryption=none&host=user.neternet.ir&type=ws#Join+Telegram:@Farah_VPN
+vless://a9a774d2-de9b-4e95-fc88-2b0ec78ff8f5@188.114.98.224:8443?mode=gun&security=tls&encryption=none&type=grpc&serviceName=wearestand&sni=wearestand.online#Join+Telegram:@Farah_VPN
+vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@57.129.53.181:23576?security=reality&encryption=none&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=fuck.rkn&sid=01#Join+Telegram:@Farah_VPN
 vless://ce069292-c8bf-40dd-a6b1-87818a1e64e9@85.121.48.77:443?encryption=none&fp=chrome&host=3-7gj.pages.dev&path=%2Fsocks5%3Dgogo%3Agogo%40185.184.70.120%3A50088&security=tls&sni=3-7gj.pages.dev&type=ws#Join+Telegram:@Farah_VPN
 vless://74b1f2da-0e37-4795-b1df-a2896d5e7cde@172.64.149.54:443?encryption=none&type=xhttp&mode=auto&host=meow.tanvexor.ir&path=/api/?ref=supervoid&security=tls&fp=chrome&sni=meow.tanvexor.ir&alpn=h2,http/1.1#Join+Telegram:@Farah_VPN
 vless://dff554dd-646c-4154-aaf4-ac0429f17648@snapp.ir:80?path=/&security=none&encryption=none&host=derakhshan.molvliafor.ir&type=ws#Join+Telegram:@Farah_VPN
@@ -3974,27 +3998,3 @@ vless://9a4bc15d-a7d4-4181-9485-405629c36894@206.238.237.133:8443?security=tls&s
 vless://0792bb58-36ac-451e-a629-e363e53da93b@172.67.180.67:443?security=tls&sni=kafka.eula.cloudns.org&type=ws&host=kafka.eula.cloudns.org&path=%2FTelegram%40V2ray_Alpha%2F%3Fed%3D2048&fp=random&alpn=http%2F1.1# VL-WS-TLS  NA-172.67.180.67:443
 vless://251780c1-1501-43b3-be2a-d144a20d479a@172.64.145.237:443?security=tls&sni=hdfy5persiaserverc1.afsharidempire.uk&type=httpupgrade&host=hdfy5persiaserverc1.afsharidempire.uk&path=/VM9JThTKh0lWQPcIDB&fp=chrome&alpn=http/1.1# VL-HTTPUPGRADE-TLS  NA-172.64.145.237:443
 vless://a13df940-020c-465f-bc89-ee5279b5cd6a@141.101.123.215:443?security=tls&sni=lw.kpcloud.eu.org&type=ws&path=%2F%3Fed%3D2048# VL-WS-TLS  NA-141.101.123.215:443
-vless://4d5400ef-201d-43a3-890f-c767746fc524@104.21.32.208:443?security=tls&sni=PpaL03.EDmUnD-RAU.wORkeRs.dev&type=ws&host=pPaL03.EdMUnD-RAu.WoRKErS.DEv&path=%2Fkndpb9d_JvNAMx3D%3Fed%3D2048&fp=randomized&alpn=h2%2Chttp%2F1.1# VL-WS-TLS  NA-104.21.32.208:443
-vless://d342d11e-d424-4583-b36e-524ab1f0afa4@165.154.163.236:587?security=tls&sni=vless.ifx.us.kg&type=ws&host=vless.ifx.us.kg&path=%2F%3Fed%3D2560# VL-WS-TLS  US-165.154.163.236:587
-vless://48198295-b7ba-4b5c-8d85-085d55a6c869@173.245.58.68:443?security=tls&sni=ac.ylks.xyz&type=ws&host=ac.ylks.xyz&path=%2F%3Fed%3D2048# VL-WS-TLS  NA-173.245.58.68:443
-vless://16980a58-70d1-44a9-88ab-9ea65f4087bf@104.25.64.147:443?security=tls&sni=xxx.66500-280b-471c-b2b8-d68b7f9960001.workers.dev&type=ws&host=xxx.66500-280b-471c-b2b8-d68b7f9960001.workers.dev&path=%2F%3Fed%3D2048&fp=chrome&alpn=h3%2Ch2# VL-WS-TLS  NA-104.25.64.147:443
-vless://2928d83a-ca75-4d52-b437-fa78c7601378@104.20.19.245:443?security=tls&sni=freedom-1rj.pages.dev&type=ws&host=freedom-1rj.pages.dev&path=%2Ffreedom-1rj.pages.dev%2F%3Fed%3D2560&fp=randomized# VL-WS-TLS  NA-104.20.19.245:443
-vless://fb4391ab-dea1-457a-f328-607febb2fef0@104.16.83.43:80?security=none&type=httpupgrade&host=sHop.gkAlabar.iR&path=/TELEGRAM-@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray,@MainV2-ray%3Fed%3D2048# VL-HTTPUPGRADE-NONE  NA-104.16.83.43:80
-vless://89b3cbba-e6ac-485a-9481-976a0415eab9@199.232.5.78:443?security=tls&sni=behdasht.hrtc.ir&encryption=none@ShadowsocksM79&type=ws&host=behdasht.hrtc.ir&path=/H?ed%3D2560&fp=randomized&alpn=h2,http/1.1# VL-WS-TLS  US-199.232.5.78:443
-vless://2928d83a-ca75-4d52-b437-fa78c7601378@104.21.21.129:443?security=tls&sni=freedom-1rj.pages.dev&type=ws&host=freedom-1rj.pages.dev&path=%2Ffreedom-1rj.pages.dev%2F%3Fed%3D2560# VL-WS-TLS  NA-104.21.21.129:443
-vless://a13df940-020c-465f-bc89-ee5279b5cd6a@173.245.59.194:443?security=tls&sni=lm.ylks01.eu.org&type=ws&host=lm.ylks01.eu.org&path=%2Fblue# VL-WS-TLS  NA-173.245.59.194:443
-vless://f0d584bc-342f-4443-ba24-79e4d0e504b1@69.84.182.112:80?security=none&type=ws&path=%2F# VL-WS-NONE  US-69.84.182.112:80
-vless://a13df940-020c-465f-bc89-ee5279b5cd6a@69.84.182.53:443?security=tls&sni=dd.ylks.xyz&type=ws&path=%2Fblue# VL-WS-TLS  US-69.84.182.53:443
-vless://a13df940-020c-465f-bc89-ee5279b5cd6a@129.146.221.78:443?security=tls&sni=cg.ylks.xyz&type=ws&host=cg.ylks.xyz&path=%2Fblue# VL-WS-TLS  US-129.146.221.78:443
-vless://fca01448-d84a-436e-9aec-3be1ebdfb350@45.194.53.81:2053?security=tls&sni=SB-1U6.PAgEs.dev&type=ws&path=%2Ffltcxoo6grqvat6v%2Fmtu4ljewms4ymdmumti3%3Fed%3D2560# VL-WS-TLS  US-45.194.53.81:2053
-vless://60865e84-af76-4132-b488-78c9c584d0d1@104.24.197.20:80?security=none&type=ws&host=www.speedtest.net.www.varzesh3.com.ftp.debian.org.daneshforoush.ir&path=%2FnekooOo%3Fed%3D1024# VL-WS-NONE  NA-104.24.197.20:80
-vless://48198295-b7ba-4b5c-8d85-085d55a6c869@188.114.99.203:443?security=tls&sni=al.ylks.xyz&type=ws&host=al.ylks.xyz&path=%2F%3Fed%3D2048# VL-WS-TLS  NA-188.114.99.203:443
-vless://fca01448-d84a-436e-9aec-3be1ebdfb350@199.34.228.161:2083?security=tls&sni=SB-1U6.PAgeS.dEv&type=ws&path=%2Furenftuu3z1kqryb%2Fmtu4ljewms4ymdmumti3%3Fed%3D2560# VL-WS-TLS  US-199.34.228.161:2083
-vless://89b3cbba-e6ac-485a-9481-976a0415eab9@172.67.73.213:443?security=tls&sni=CCOnfIG.SPDTest.ggFf.NET&type=ws&host=cconfig.spdtest.ggff.net&path=%2FW5V92vB3BQrJH2yY%3Fed%3D2560&fp=randomized&alpn=h2,http/1.1# VL-WS-TLS  NA-172.67.73.213:443
-vless://a13df940-020c-465f-bc89-ee5279b5cd6a@217.163.76.116:443?security=tls&sni=lb.kpcloud.eu.org&type=ws&host=lb.kpcloud.eu.org&path=%2Fblue# VL-WS-TLS  GB-217.163.76.116:443
-vless://eee42454-c782-440e-9feb-4822bb2dfc9c@172.66.44.254:8880?security=none&type=httpupgrade&host=6.www.speedtest.net.zula.ir.zemestanil.iR.&path=%2FTELEGRAM-PROXY_MTM-PROXY_MTM-PROXY_MTM-PROXY_MTM-PROXY_MTM-PROXY_MTM%3Fed%3D2048# VL-HTTPUPGRADE-NONE  NA-172.66.44.254:8880
-vless://89b3cbba-e6ac-485a-9481-976a0415eab9@140.248.185.46:443?security=tls&sni=aliii.ir&type=ws&host=aliii.ir&path=%2FkptMTT8pTmxLWsoJ%3Fed%3D2560&fp=chrome&alpn=h2,http/1.1# VL-WS-TLS  US-140.248.185.46:443
-vless://f0d584bc-342f-4443-ba24-79e4d0e504b1@45.85.119.238:8080?security=none&type=ws&host=late-tooth.granzinhannah.workers.dev&path=%2F%40AZARBAYJAB1%40AZARBAYJAB1%40AZARBAYJAB1%3Fed# VL-WS-NONE  RO-45.85.119.238:8080
-vless://2928d83a-ca75-4d52-b437-fa78c7601378@104.20.19.193:443?security=tls&sni=freedom-1rj.pages.dev&type=ws&host=freedom-1rj.pages.dev&path=%2Ffreedom-1rj.pages.dev%2F%3Fed%3D2560&fp=randomized# VL-WS-TLS  NA-104.20.19.193:443
-vless://48198295-b7ba-4b5c-8d85-085d55a6c869@198.41.211.28:443?security=tls&sni=ax.ylks.xyz&type=ws&path=%2F%3Fed%3D2048# VL-WS-TLS  NA-198.41.211.28:443
-vless://894e0e6e-d415-47fd-84f5-418896d7a310@104.21.60.152:443?security=tls&sni=freedom2.sepale8166.workers.dev&type=ws&host=freedom2.sepale8166.workers.dev&path=%2F&fp=chrome# VL-WS-TLS  NA-104.21.60.152:443
