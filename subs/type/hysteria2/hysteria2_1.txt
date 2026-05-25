@@ -553,3 +553,4 @@ hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-us-006.fastervpn.world:443?insecure=1&s
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60002?insecure=1&obfs=salamander&obfs-password=ZDQxZDhjZDk4ZFAwYjIwNA%3D%3D&sni=zf.9966690.xyz#%F0%9F%87%BA%F0%9F%87%B8%20%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90%3Adafei.de%20%E7%BE%8E%E5%9B%BD%2036
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60043?insecure=1&sni=zf.9966690.xyz&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#B%20-%20%F0%9F%87%BA%F0%9F%87%B8%20US%2007%20TG%3A%20%40nodpai
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ⚙️
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🧬
