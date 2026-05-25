@@ -565,3 +565,8 @@ hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60033?insecure=1
 hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@s545.ccgfw.online:443?sni=s545.ccgfw.online&alpn=h3&mport=30000-32000&hopinterval=30s#%F0%9F%87%A7%F0%9F%87%AC%20Bulgaria%2C%20Veliko%20Tarnovo%20%7C%20%5BBL%5D
 hysteria2://2f4c3fc5-8fa2-4576-a583-8f98a6026887@hkt.ccwink.cc:56309?insecure=1&allowInsecure=1#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Central%20%7C%20%5BBL%5D
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🦅
+hysteria2://hysteria2_fastlane_210pha9tw@150.241.79.106:443?sni=de2.h.fastlanehosting.ru#%F0%9F%AA%B231%40oneclickvpnkeys
+hysteria2://7dwz957ionaal93z@fiv4.alexanderoff.ru:8443?headerType=none&encryption=none&sni=fiv4.alexanderoff.ru&insecure=0#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@150.129.10.140:443?sni=s614.ccgfw.online&alpn=h3&mport=30000-32000&hopinterval=30s#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🐺
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-tw-002.fastervpn.world:443?insecure=1&sni=vpn-tw-002.fastervpn.world#B%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2001%20TG%3A%20%40nodpai
