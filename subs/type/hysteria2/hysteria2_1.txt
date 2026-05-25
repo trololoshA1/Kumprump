@@ -562,3 +562,6 @@ hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@s255.ayxj.top:443?sni=s255.ayxj
 hysteria2://f076b291-b745-4ede-8227-cdf9dde7c744@sg2.yuntong.click:443?insecure=0&sni=sg2.yuntong.click&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=#
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🔥
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60033?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#B%20-%20%F0%9F%87%BA%F0%9F%87%B8%20US%2065%20TG%3A%20%40nodpai
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@s545.ccgfw.online:443?sni=s545.ccgfw.online&alpn=h3&mport=30000-32000&hopinterval=30s#%F0%9F%87%A7%F0%9F%87%AC%20Bulgaria%2C%20Veliko%20Tarnovo%20%7C%20%5BBL%5D
+hysteria2://2f4c3fc5-8fa2-4576-a583-8f98a6026887@hkt.ccwink.cc:56309?insecure=1&allowInsecure=1#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Central%20%7C%20%5BBL%5D
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🦅
