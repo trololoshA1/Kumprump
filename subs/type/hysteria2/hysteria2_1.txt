@@ -557,3 +557,8 @@ hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insec
 hysteria2://9b016db2-a63d-43ab-99d8-e424022a752f@sg2.yuntong.click:443?insecure=0&sni=sg2.yuntong.click&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=#C%20-%20%F0%9F%87%B8%F0%9F%87%AC%20SG%2027%20TG%3A%20%40nodpai
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🧿
 hysteria2://HvD68H4VFx@srm.kishonline.online:443?security=tls&obfs=salamander&alpn=h3&obfs-password=kish-data-center&insecure=0&sni=srm.kishonline.online#
+hysteria2://e2b63581-849f-405e-9a9c-53c61b5d94b3@51.79.176.33:8262?sni=www.bing.com&insecure=1#%F0%9F%87%B8%F0%9F%87%AC%20Singapore%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@s255.ayxj.top:443?sni=s255.ayxj.top&alpn=h3&mport=30000-32000&hopinterval=30s#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%A9%F0%9F%87%AA%20%F0%9F%87%AC%F0%9F%87%A7%20%7C%20%5BBL%5D
+hysteria2://f076b291-b745-4ede-8227-cdf9dde7c744@sg2.yuntong.click:443?insecure=0&sni=sg2.yuntong.click&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=#
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🔥
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60033?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#B%20-%20%F0%9F%87%BA%F0%9F%87%B8%20US%2065%20TG%3A%20%40nodpai
