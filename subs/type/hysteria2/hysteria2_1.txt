@@ -586,3 +586,11 @@ hysteria2://AXLrrPiPOzZhWdbDRrGEfjDK-56U_H2y@multi.fresedvpn.site:26080?sni=mult
 hysteria2://AXLrrPiPOzZhWdbDRrGEfjDK-56U_H2y@multi.fresedvpn.site:23080?sni=multi.fresedvpn.site#%F0%9F%8C%90%20Anycast-IP%20%7C%20%F0%9F%87%BA%F0%9F%87%B8%20%5B%2ACIDR%5D
 hysteria2://d6774cdf-a0f4-4a23-8069-99bb59d315ac@hkju.sevenka.top:20122?sni=hkju.sevenka.top&insecure=1#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%20%5B%2ACIDR%5D
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🥷
+hysteria2://6yhPOr3f9o@47.242.216.193:30236?sni=go.microsoft.com&insecure=1&allowInsecure=1#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Hong%20Kong%20%7C%20%5BBL%5D
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🦾
+hysteria2://9994536d-4824-45f9-bdc9-ccde0443f3fa@assgzl.hhwyy.xyz:35561/?insecure=1&sni=assgzl.hhwyy.xyz#%E2%9B%B346@oneclickvpnkeys
+hysteria2://de72b066a61a39af@204.12.170.168:443/?insecure=1&obfs=salamander&obfs-password=726c9c641a068d74&sni=claude.ai#%E2%9B%B349@oneclickvpnkeys
+hysteria2://fe9b17e8-41e1-4d1b-b588-93a23665724f@136.0.42.119:2056/?insecure=1&sni=mg5.mangshe.xyz#%E2%9B%B348@oneclickvpnkeys%0D
+hysteria2://fe9b17e8-41e1-4d1b-b588-93a23665724f@166.88.142.205:2056/?insecure=1&sni=mg6.mangshe.xyz#%E2%9B%B347@oneclickvpnkeys
+hysteria2://xWEegb8ZeH@45.81.19.251:2087?security=tls&insecure=1&sni=web.rubika.ir#
+hysteria2://xWEegb8ZeH@45.81.19.251:443?security=tls&insecure=1#
