@@ -594,3 +594,8 @@ hysteria2://fe9b17e8-41e1-4d1b-b588-93a23665724f@136.0.42.119:2056/?insecure=1&s
 hysteria2://fe9b17e8-41e1-4d1b-b588-93a23665724f@166.88.142.205:2056/?insecure=1&sni=mg6.mangshe.xyz#%E2%9B%B347@oneclickvpnkeys
 hysteria2://xWEegb8ZeH@45.81.19.251:2087?security=tls&insecure=1&sni=web.rubika.ir#
 hysteria2://xWEegb8ZeH@45.81.19.251:443?security=tls&insecure=1#
+hysteria2://200proyq5wi7tb7x@fiv4.alexanderoff.ru:8443?headerType=none&encryption=none&sni=fiv4.alexanderoff.ru&insecure=0#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
+hysteria2://50b8c74a-e18e-4a61-b64c-f4010464c4dd@aws-linkhy1.liangxin1.xyz:443?sni=iosapps.itunes.apple.com&insecure=1&mport=60000-65530#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Hong%20Kong%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D
+hysteria2://847a8e71-53b1-4d52-98b7-75aca9b23607@1.us.chuanyun-endpoint.cc:8443?obfs=salamander&obfs-password=kvskPTMwDB0zvUGg&sni=1.us.chuanyun-endpoint.cc#%F0%9F%87%AD%F0%9F%87%B0%20%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90%3Adafei.de%20%E9%A6%99%E6%B8%AF%2002
+hysteria2://847a8e71-53b1-4d52-98b7-75aca9b23607@2.jp.chuanyun-endpoint.cc:8443?obfs=salamander&obfs-password=BOpEbQpylExOX8Fy&sni=2.jp.chuanyun-endpoint.cc#%F0%9F%87%AF%F0%9F%87%B5%20%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90%3Adafei.de%20%E6%97%A5%E6%9C%AC%2001
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🔌
