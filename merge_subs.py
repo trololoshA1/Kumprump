@@ -7,10 +7,9 @@ import shutil
 import logging
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from tqdm import tqdm   # это прогресс-бар, красиво показывает %
 
-# ==================== НАСТРОЙКИ (тут можно менять) ====================
-MAX_WORKERS = 12          # Сколько скачиваний одновременно (10-15 нормально)
+# ==================== НАСТРОЙКИ ====================
+MAX_WORKERS = 12          # Количество одновременных скачиваний
 MAX_LINKS_PER_FILE = 4000
 MAX_HYSTERIA2_SIZE_MB = 90
 
@@ -19,7 +18,7 @@ RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
 
-# Настройка логов
+# Логи
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s | %(message)s',
@@ -40,7 +39,7 @@ types = ["vless", "vmess", "trojan", "hysteria2", "shadowsocks", "tuic", "other"
 for t in types:
     os.makedirs(f"{TYPE_FOLDER}/{t}", exist_ok=True)
 
-# ==================== ОЧИСТКА ВСЕГО КРОМЕ HYSTERIA2 ====================
+# ==================== ОЧИСТКА (кроме hysteria2) ====================
 def clear_folder(folder_path):
     if not os.path.exists(folder_path):
         return
@@ -54,7 +53,7 @@ def clear_folder(folder_path):
         except:
             pass
 
-logger.info("🧹 Очищаем папки кроме hysteria2...")
+logger.info("🧹 Очищаем все папки кроме hysteria2...")
 clear_folder(RU_FOLDER)
 clear_folder(WORLD_FOLDER)
 
@@ -133,7 +132,7 @@ def load_existing_hysteria2():
             continue
     return configs
 
-# ==================== ПАРАЛЛЕЛЬНАЯ ЗАГРУЗКА ====================
+# ==================== СКАЧИВАНИЕ ОДНОЙ ССЫЛКИ ====================
 def fetch_one_url(url):
     for attempt in range(3):
         try:
@@ -148,7 +147,7 @@ def fetch_one_url(url):
 with open(INPUT_FILE, "r", encoding="utf-8", errors="ignore") as f:
     urls = [clean_url(line) for line in f if clean_url(line) and not clean_url(line).startswith("#")]
 
-logger.info(f"Найдено {len(urls)} ссылок на подписки")
+logger.info(f"Найдено {len(urls)} ссылок. Начинаем скачивание...")
 
 merged = []
 seen = set()
@@ -157,7 +156,7 @@ seen = set()
 with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
     future_to_url = {executor.submit(fetch_one_url, url): url for url in urls}
     
-    for future in tqdm(as_completed(future_to_url), total=len(urls), desc="Скачиваем подписки"):
+    for future in as_completed(future_to_url):
         url, content = future.result()
         if content:
             added = 0
@@ -170,16 +169,16 @@ with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
                         merged.append(line)
                         added += 1
             if added > 0:
-                logger.info(f"+ {added} конфигов из {url[:60]}...")
+                logger.info(f"+ {added} конфигов из {url[:70]}...")
 
 print(f"\nВсего уникальных конфигов: {len(merged)}")
 
-# Hysteria2 — накопление (не трогаем)
+# ==================== HYSTERIA2 (накопление) ====================
 old_hy = load_existing_hysteria2()
 new_hy = [link for link in merged if get_proxy_type(link) == "hysteria2"]
 all_hysteria2 = old_hy + [x for x in new_hy if get_fingerprint(x) not in [get_fingerprint(y) for y in old_hy]]
 
-# Сохранение
+# ==================== СОХРАНЕНИЕ ====================
 def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE, max_size_mb=None):
     if not links:
         return
@@ -188,15 +187,16 @@ def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE, max_size
     for link in links:
         current.append(link)
         if len(current) >= max_per_file:
-            with open(f"{folder}/{prefix}_{part}.txt", "w", encoding="utf-8") as f:
+            filename = f"{folder}/{prefix}_{part}.txt"
+            with open(filename, "w", encoding="utf-8") as f:
                 f.write("\n".join(current) + "\n")
             current = []
             part += 1
     if current:
-        with open(f"{folder}/{prefix}_{part}.txt", "w", encoding="utf-8") as f:
+        filename = f"{folder}/{prefix}_{part}.txt"
+        with open(filename, "w", encoding="utf-8") as f:
             f.write("\n".join(current) + "\n")
 
-# Сохранение
 ru_links = [link for link in merged if is_russian_config(link)]
 world_links = [link for link in merged if not is_russian_config(link)]
 
@@ -216,4 +216,4 @@ with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
 logger.info("🎉 Скрипт успешно завершён!")
-print("🎉 Готово! Hysteria2 копится, всё остальное — только свежее.")
+print("🎉 Готово! Hysteria2 копится, остальное — только свежее.")
