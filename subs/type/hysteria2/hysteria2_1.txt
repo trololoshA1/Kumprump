@@ -727,3 +727,5 @@ hysteria2://df1a0967-5b79-41ec-8d12-915e9056c6e2@sg15.769970.xyz:8080?insecure=1
 hysteria2://df1a0967-5b79-41ec-8d12-915e9056c6e2@us03.459292.xyz:20000?insecure=1&sni=us03.459292.xyz&obfs=salamander&obfs-password=ZTBjNDA0YTVhNTFkMzFlOQ==#B%20-%20%F0%9F%87%BA%F0%9F%87%B8%20US%2016%20TG%3A%20%40nodpai
 hysteria2://f6836112-e9f3-4803-a366-5606ac214324@5gzdx.769970.xyz:8080?insecure=1&sni=5gzdx.769970.xyz#B%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2016%20TG%3A%20%40nodpai
 hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443?insecure=1&sni=vpn-de-002.fastervpn.world#B%20-%20%F0%9F%87%A9%F0%9F%87%AA%20DE%2010%20TG%3A%20%40nodpai
+hysteria2://d6774cdf-a0f4-4a23-8069-99bb59d315ac@hk3.sevenka.top:20102?sni=hk3.sevenka.top&insecure=1&allowInsecure=1#%F0%9F%87%AD%F0%9F%87%B0%20Hong%20Kong%2C%20Central%20%7C%20%5BBL%5D
+hysteria2://9d0f6021-e1e3-47cd-a18e-722dd7f1c2ee@154.85.18.134:443,55000-56000?insecure=1&sni=www.bing.com#
