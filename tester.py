@@ -27,9 +27,10 @@ TEST_SITES = [
 
 TEST_TIMEOUT = 7
 SING_BOX_PORT = 1080
+MAX_PARALLEL = 30  # количество одновременных тестов
 
 # ==================== ПАПКИ ====================
-types = ["vless", "vmess", "trojan", "hysteria2", "shadowsocks", "tuic", "other"]
+types = ["trojan", "hysteria2"]
 
 for folder in [TESTED_FOLDER, RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
     os.makedirs(folder, exist_ok=True)
@@ -46,12 +47,8 @@ def is_russian_config(link):
 def get_proxy_type(link):
     l = link.lower()
     if l.startswith(("hysteria2://", "hy2://")): return "hysteria2"
-    if l.startswith("vless://"): return "vless"
-    if l.startswith("vmess://"): return "vmess"
     if l.startswith("trojan://"): return "trojan"
-    if l.startswith("ss://"): return "shadowsocks"
-    if l.startswith("tuic://"): return "tuic"
-    return "other"
+    return None  # остальные игнорируем
 
 def get_fingerprint(link):
     return hashlib.sha256(link.strip().encode()).hexdigest()
@@ -81,7 +78,7 @@ async def test_proxy(proxy_link):
                     "type": "selector",
                     "outbounds": [
                         {
-                            "type": "vless",
+                            "type": "trojan" if proxy_link.startswith("trojan://") else "hysteria2",
                             "server": proxy_link
                         }
                     ]
@@ -100,9 +97,12 @@ async def test_proxy(proxy_link):
 
     await asyncio.sleep(1.2)  # ждём запуска
 
+    proxy_url = f"socks5://127.0.0.1:{SING_BOX_PORT}"
+    transport = httpx.AsyncHTTPTransport(proxy=proxy_url)
+
     try:
         async with httpx.AsyncClient(
-            proxies=f"socks5://127.0.0.1:{SING_BOX_PORT}",
+            transport=transport,
             timeout=TEST_TIMEOUT
         ) as client:
 
@@ -120,15 +120,11 @@ async def test_proxy(proxy_link):
         proc.kill()
         os.remove(config_path)
 
-# ==================== ТЕСТ ВСЕХ ПРОКСИ ====================
-async def test_all(links):
-    good = []
-    bad = []
-
-    for link in links:
+# ==================== ПАРАЛЛЕЛЬНОЕ ТЕСТИРОВАНИЕ ====================
+async def worker(link, sem, good, bad):
+    async with sem:
         print(f"⏳ Тест: {link[:60]}...")
         ok = await test_proxy(link)
-
         if ok:
             print(f"✔ Рабочий")
             good.append(link)
@@ -136,24 +132,33 @@ async def test_all(links):
             print(f"✖ Не работает")
             bad.append(link)
 
+async def test_all(links):
+    good = []
+    bad = []
+    sem = asyncio.Semaphore(MAX_PARALLEL)
+
+    tasks = [worker(link, sem, good, bad) for link in links]
+    await asyncio.gather(*tasks)
+
     return good, bad
 
 # ==================== СОХРАНЕНИЕ ====================
 def save_tested(links):
     for link in links:
+        t = get_proxy_type(link)
+        if not t:
+            continue
+
         if is_russian_config(link):
             folder = RU_FOLDER
         else:
             folder = WORLD_FOLDER
 
-        t = get_proxy_type(link)
         type_folder = f"{TYPE_FOLDER}/{t}"
 
-        # Сохраняем в регион
         with open(f"{folder}/tested.txt", "a", encoding="utf-8") as f:
             f.write(link + "\n")
 
-        # Сохраняем по типу
         with open(f"{type_folder}/tested.txt", "a", encoding="utf-8") as f:
             f.write(link + "\n")
 
@@ -161,7 +166,10 @@ def save_tested(links):
 print("📌 Загружаем merged_subs.txt...")
 
 with open(MERGED_FILE, "r", encoding="utf-8") as f:
-    links = [l.strip() for l in f if l.strip()]
+    all_links = [l.strip() for l in f if l.strip()]
+
+# фильтруем только trojan + hysteria2
+links = [l for l in all_links if get_proxy_type(l) in ("trojan", "hysteria2")]
 
 print(f"Всего конфигов для теста: {len(links)}")
 
