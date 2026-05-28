@@ -1206,3 +1206,18 @@ hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@150.129.10.140:443?sni=s614.ccg
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60026?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A%3D%3D&sni=zf.9966690.xyz#🌐سرور
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zfusp.9966690.xyz:60034?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A%3D%3D&sni=zfusp.9966690.xyz#🌐سرور
 hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443/?insecure=1&sni=vpn-de-002.fastervpn.world#🇩🇪33880
+hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@37.114.49.38:2056/?insecure=1&sni=flkf.mangshe.xyz# By EbraSha 🌀
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=1&sni=api.kermanshahi.org# By EbraSha ♣️
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 🦇
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=1&sni=api.kermanshahi.org# By EbraSha 💎
+hysteria2://45a90d32-08bd-4dea-8345-f1f541cc7f90@hk02.jgpy.help:10085?insecure=1&fp=&sni=apple.com&obfs=&obfs-password=#
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-tw-002.fastervpn.world:443?insecure=1&security=tls&sni=vpn-tw-002.fastervpn.world#%E6%97%A5%E6%9C%AC+V2CROSS.COM
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-tw-002.fastervpn.world:443?insecure=1&sni=vpn-tw-002.fastervpn.world#
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-tw-002.fastervpn.world:443?insecure=1&sni=vpn-tw-002.fastervpn.world#%E6%97%A5%E6%9C%AC%20V2CROSS.COM%202
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-tw-002.fastervpn.world:443?insecure=1&sni=vpn-tw-002.fastervpn.world#B%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2003%20TG%3A%20%40nodpai
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@tw.9966690.xyz:20000?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NT6iNA==#
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@tw.9966690.xyz:20000?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NT6iNA==#A%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2001%20TG%3A%20%40nodpai
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60016?insecure=1&sni=zf.9966690.xyz&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60016?insecure=1&sni=zf.9966690.xyz&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A==#B%20-%20%F0%9F%87%AF%F0%9F%87%B5%20JP%2005%20TG%3A%20%40nodpai
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443?insecure=1&security=tls&sni=vpn-de-002.fastervpn.world#%E7%BE%8E%E5%9B%BD+Amazon+EC2%E6%9C%8D%E5%8A%A1%E5%99%A8
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443?insecure=1&sni=vpn-de-002.fastervpn.world#%F0%9F%AB%9C41%40oneclickvpnkeys
