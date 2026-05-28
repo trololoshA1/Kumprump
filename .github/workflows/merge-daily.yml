@@ -20,11 +20,22 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install requests
+      - name: Install Python dependencies
+        run: |
+          pip install requests httpx
 
-      - name: Run merge script
+      - name: Install sing-box
+        run: |
+          wget https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-linux-amd64.tar.gz
+          tar -xzf sing-box-linux-amd64.tar.gz
+          sudo mv sing-box /usr/local/bin/
+          sudo chmod +x /usr/local/bin/sing-box
+
+      - name: Run merge script (merge_subs.py)
         run: python merge_subs.py
+
+      - name: Run tester (tester.py)
+        run: python tester.py
 
       - name: Commit and push
         run: |
@@ -34,6 +45,7 @@ jobs:
           # Принудительно добавляем ВСЁ
           git add -A
           git add subs/ 2>/dev/null || true
+          git add tested/ 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
