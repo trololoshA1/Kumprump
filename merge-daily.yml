@@ -2,7 +2,7 @@ name: Daily Merge Proxies
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # каждые 4 часа
+    - cron: "0 */4 * * *"
   workflow_dispatch:
 
 jobs:
@@ -26,9 +26,11 @@ jobs:
 
       - name: Install sing-box
         run: |
-          wget https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-linux-amd64.tar.gz
-          tar -xzf sing-box-linux-amd64.tar.gz
-          sudo mv sing-box /usr/local/bin/
+          LATEST=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep "browser_download_url" | grep "linux-amd64.tar.gz" | cut -d '"' -f 4)
+          echo "Downloading: $LATEST"
+          wget "$LATEST" -O sing-box.tar.gz
+          tar -xzf sing-box.tar.gz
+          sudo mv sing-box*/sing-box /usr/local/bin/
           sudo chmod +x /usr/local/bin/sing-box
 
       - name: Run merge script (merge_subs.py)
@@ -42,7 +44,6 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Принудительно добавляем ВСЁ
           git add -A
           git add subs/ 2>/dev/null || true
           git add tested/ 2>/dev/null || true
