@@ -1164,3 +1164,45 @@ hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a14:3f87:f001:1a::a:35000]:44
 hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@updates.kermanshahi.org:33500?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=updates.kermanshahi.org# By EbraSha ⛓️
 hysteria2://dongtaiwang.com@208.87.243.187:22222?insecure=1&sni=www.bing.com# By EbraSha ♣️
 hysteria2://zhangyang@130.61.50.75:6443?insecure=1&sni=dash.cloudflare.com# By EbraSha 🔐
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@150.129.10.140:443?sni=s614.ccgfw.online&insecure=0#NL   HYSTERIA2-TCP-NTLS - The Infrastructure Group B.V.  150.129.10.140
+hysteria2://338ca147-4e0c-49f8-a1b4-3a02b9f5cbb3@129.159.97.206:51000?sni=cn.cremedelamer.com&insecure=1#US   HYSTERIA2-TCP-NTLS - ORACLE-BMC-31898  129.159.97.206
+hysteria2://338ca147-4e0c-49f8-a1b4-3a02b9f5cbb3@141.148.222.181:51000?sni=cn.cremedelamer.com&insecure=1#IN   HYSTERIA2-TCP-NTLS - ORACLE-BMC-31898  141.148.222.181
+hysteria2://338ca147-4e0c-49f8-a1b4-3a02b9f5cbb3@129.146.215.233:51000?sni=cn.cremedelamer.com&insecure=1#US   HYSTERIA2-TCP-NTLS - ORACLE-BMC-31898  129.146.215.233
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zfusp.9966690.xyz:60034?sni=zfusp.9966690.xyz&insecure=1&obfs=salamander#US   HYSTERIA2-TCP-NTLS - ORACLE-BMC-31898  167.234.216.12
+hysteria2://0wg3zH68LL6S91ueKHvZFxWM@hy2.lingshichat.top:443?sni=hy2.lingshichat.top&insecure=0#US   HYSTERIA2-TCP-NTLS - GTT Communications Inc.  70.39.195.40
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443?sni=vpn-de-002.fastervpn.world&insecure=1#DE   HYSTERIA2-TCP-NTLS - AMAZON-02  54.93.178.12
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60026?sni=zf.9966690.xyz&insecure=1&obfs=salamander#IN   HYSTERIA2-TCP-NTLS - ORACLE-BMC-31898  129.154.234.117
+hysteria2://0wg3zH68LL6S91ueKHvZFxWM@hy2.lingshichat.top:443?sni=hy2.lingshichat.top#
+hysteria2://0wg3zH68LL6S91ueKHvZFxWM@hy2.lingshichat.top:443?sni=hy2.lingshichat.top&insecure=0#
+hysteria2://17cdeb6c-f046-11ee-bdac-f23c93141fad@c37b0be5n-t3kyo0-t3lvgh-2gok.la.shifen.uk:1743/?insecure=1&sni=c37b0be5-t3kyo0-t3lvgh-2gok.la.shifen.uk#
+hysteria2://45a90d32-08bd-4dea-8345-f1f541cc7f90@hk02.jgpy.help:10085?insecure=1&fp=&sni=apple.com&obfs=&obfs-password=#%F0%9F%87%AD%F0%9F%87%B0HK_2%7C1.8MB/s
+hysteria2://6286105c-fb6d-11ef-be96-f23c93136cb3@227fd503-t4ssg0-t5vo4i-4550.la.shifen.uk:1743?sni=227fd503-t4ssg0-t5vo4i-4550.la.shifen.uk&insecure=1&allowInsecure=1#
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@150.129.10.140:443?sni=s614.ccgfw.online#
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@150.129.10.140:443?sni=s614.ccgfw.online&insecure=0#
+hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@vpn-tw-002.fastervpn.world:443?insecure=1&sni=vpn-tw-002.fastervpn.world#B%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2005%20TG%3A%20%40nodpai
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60026?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A%3D%3D&sni=zf.9966690.xyz#
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zfusp.9966690.xyz:60034?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A%3D%3D&sni=zfusp.9966690.xyz#
+hysteria2://auth@49.12.142.89:443?insecure=1&alpn=h3&sni=www.microsoft.com#
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?insecure=1&sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?insecure=1&sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#%F0%9F%87%A9%F0%9F%87%AA33557%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me/SO...
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?insecure=1&sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?insecure=1&sni=api.kermanshahi.org&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#%F0%9F%87%A9%F0%9F%87%AA33559%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me/SO...
+hysteria2://dongtaiwang.com@208.87.243.187:22222?sni=sberbank.ru&insecure=1&allowInsecure=1#
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443/?insecure=1&sni=vpn-de-002.fastervpn.world#%F0%9F%87%A9%F0%9F%87%AA33880%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me%2FSOSkeyNET
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443/?insecure=1&sni=vpn-de-002.fastervpn.world#33880
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443/?insecure=1&sni=vpn-de-002.fastervpn.world#41@oneclickvpnkeys
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443?insecure=1&sni=vpn-de-002.fastervpn.world#
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443?insecure=1&sni=vpn-de-002.fastervpn.world#B%20-%20%F0%9F%87%A9%F0%9F%87%AA%20DE%2013%20TG%3A%20%40nodpai
+hysteria2://qqqqqq%3AWvu3SPFZQP2qVATBsz5V@fi2.alexanderoff.ru:443?headerType=none&encryption=none&sni=fi2.alexanderoff.ru&insecure=0#
+hysteria2://qqqqqq%3AWvu3SPFZQP2qVATBsz5V@fi2.alexanderoff.ru:443?security=tls&alpn=h3&insecure=0&sni=fi2.alexanderoff.ru#
+hysteria2://qqqqqq%3AWvu3SPFZQP2qVATBsz5V@fi2.alexanderoff.ru:443?security=tls&insecure=0&sni=fi2.alexanderoff.ru#
+hysteria2://qqqqqq:Wvu3SPFZQP2qVATBsz5V@fi2.alexanderoff.ru:443?security=tls&fm=%7B%7D&allowinsecure=0&sni=fi2.alexanderoff.ru#
+hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@37.114.49.38:2056/?insecure=1&sni=flkf.mangshe.xyz# By EbraSha 🛰️
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@181.214.99.162:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=1&sni=api.kermanshahi.org# By EbraSha 🔥
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 📛
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=1&sni=api.kermanshahi.org# By EbraSha 🪖
+hysteria2://0wg3zH68LL6S91ueKHvZFxWM@hy2.lingshichat.top:443?sni=hy2.lingshichat.top#🌐سرور
+hysteria2://6d49fae1-374d-313e-b360-1227b0ea8dea@150.129.10.140:443?sni=s614.ccgfw.online#🌐سرور
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60026?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A%3D%3D&sni=zf.9966690.xyz#🌐سرور
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zfusp.9966690.xyz:60034?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk42TU23T365A%3D%3D&sni=zfusp.9966690.xyz#🌐سرور
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-de-002.fastervpn.world:443/?insecure=1&sni=vpn-de-002.fastervpn.world#🇩🇪33880
