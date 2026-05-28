@@ -2,7 +2,7 @@ name: Daily Merge Proxies
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # каждые 4 часа
+    - cron: "0 */4 * * *"
   workflow_dispatch:
 
 jobs:
@@ -20,25 +20,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies
-        run: |
-          pip install requests
-          pip install "httpx[socks]"
+      - name: Install dependencies
+        run: pip install requests
 
-      - name: Install sing-box
-        run: |
-          LATEST=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep "browser_download_url" | grep "linux-amd64.tar.gz" | cut -d '"' -f 4)
-          echo "Downloading: $LATEST"
-          wget "$LATEST" -O sing-box.tar.gz
-          tar -xzf sing-box.tar.gz
-          sudo mv sing-box*/sing-box /usr/local/bin/
-          sudo chmod +x /usr/local/bin/sing-box
-
-      - name: Run merge script (merge_subs.py)
+      - name: Run merge script
         run: python merge_subs.py
-
-      - name: Run tester (tester.py)
-        run: python tester.py
 
       - name: Commit and push
         run: |
@@ -47,7 +33,6 @@ jobs:
 
           git add -A
           git add subs/ 2>/dev/null || true
-          git add tested/ 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
