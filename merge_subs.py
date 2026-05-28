@@ -5,18 +5,19 @@ import os
 import re
 import shutil
 import logging
+import hashlib
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ==================== НАСТРОЙКИ ====================
-MAX_WORKERS = 12          # Количество одновременных скачиваний
+MAX_WORKERS = 12
 MAX_LINKS_PER_FILE = 4000
-MAX_HYSTERIA2_SIZE_MB = 90
 
 INPUT_FILE = "links.txt"
 RU_FOLDER = "subs/ru"
 WORLD_FOLDER = "subs/world"
 TYPE_FOLDER = "subs/type"
+HYST_FOLDER = f"{TYPE_FOLDER}/hysteria2"
 
 # Логи
 logging.basicConfig(
@@ -29,9 +30,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-print(f"[{datetime.now()}] 🚀 Kumprump запущен")
+print(f"[{datetime.now()}] 🚀 Builder запущен")
 
-# ==================== СОЗДАЁМ ПАПКИ ====================
+# ==================== ПАПКИ ====================
 for folder in [RU_FOLDER, WORLD_FOLDER, TYPE_FOLDER]:
     os.makedirs(folder, exist_ok=True)
 
@@ -44,16 +45,16 @@ def clear_folder(folder_path):
     if not os.path.exists(folder_path):
         return
     for item in os.listdir(folder_path):
-        item_path = os.path.join(folder_path, item)
+        path = os.path.join(folder_path, item)
         try:
-            if os.path.isfile(item_path):
-                os.remove(item_path)
-            elif os.path.isdir(item_path):
-                shutil.rmtree(item_path)
+            if os.path.isfile(path):
+                os.remove(path)
+            else:
+                shutil.rmtree(path)
         except:
             pass
 
-logger.info("🧹 Очищаем все папки кроме hysteria2...")
+logger.info("🧹 Очищаем папки (кроме hysteria2)...")
 clear_folder(RU_FOLDER)
 clear_folder(WORLD_FOLDER)
 
@@ -61,7 +62,7 @@ for t in types:
     if t != "hysteria2":
         clear_folder(f"{TYPE_FOLDER}/{t}")
 
-# ==================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ====================
+# ==================== ВСПОМОГАТЕЛЬНЫЕ ====================
 def clean_url(url):
     return url.strip().strip('"\' \t\n')
 
@@ -69,32 +70,28 @@ def is_proxy_link(line):
     if not line or line.startswith('#'):
         return False
     lower = line.lower()
-    return any(lower.startswith(p) for p in ["vless://", "vmess://", "trojan://", "ss://", "hysteria2://", "hy2://", "tuic://"])
+    return any(lower.startswith(p) for p in [
+        "vless://", "vmess://", "trojan://", "ss://",
+        "hysteria2://", "hy2://", "tuic://"
+    ])
 
 def get_proxy_type(link):
-    lower = link.lower()
-    if lower.startswith(("hysteria2://", "hy2://")): return "hysteria2"
-    if lower.startswith("vless://"): return "vless"
-    if lower.startswith("vmess://"): return "vmess"
-    if lower.startswith("trojan://"): return "trojan"
-    if lower.startswith("ss://"): return "shadowsocks"
-    if lower.startswith("tuic://"): return "tuic"
+    l = link.lower()
+    if l.startswith(("hysteria2://", "hy2://")): return "hysteria2"
+    if l.startswith("vless://"): return "vless"
+    if l.startswith("vmess://"): return "vmess"
+    if l.startswith("trojan://"): return "trojan"
+    if l.startswith("ss://"): return "shadowsocks"
+    if l.startswith("tuic://"): return "tuic"
     return "other"
 
+RU_PATTERN = re.compile(r"(ru[-_]|🇷🇺|russia|moscow|moskva|spb|piter)", re.I)
+
 def is_russian_config(link):
-    lower = link.lower()
-    keywords = ["ru-", "🇷🇺", "russia", "moscow", "spb"]
-    return any(k in lower for k in keywords)
+    return bool(RU_PATTERN.search(link))
 
 def get_fingerprint(link):
-    if "hysteria2://" in link or "hy2://" in link:
-        try:
-            from urllib.parse import urlparse
-            parsed = urlparse(link)
-            return f"hy2:{parsed.username}@{parsed.hostname}:{parsed.port}"
-        except:
-            pass
-    return link[:150]
+    return hashlib.sha256(link.strip().encode()).hexdigest()
 
 def decode_base64_if_needed(content):
     content = content.strip()
@@ -103,48 +100,44 @@ def decode_base64_if_needed(content):
     try:
         return base64.b64decode(content + "==").decode("utf-8", errors="ignore")
     except:
-        try:
-            return base64.urlsafe_b64decode(content + "==").decode("utf-8", errors="ignore")
-        except:
-            return content
+        return content
 
 # ==================== ЗАГРУЗКА СТАРЫХ HYSTERIA2 ====================
 def load_existing_hysteria2():
-    folder = f"{TYPE_FOLDER}/hysteria2"
     configs = []
     seen = set()
-    if not os.path.exists(folder):
+    if not os.path.exists(HYST_FOLDER):
         return configs
-    for file in sorted(os.listdir(folder)):
+
+    for file in sorted(os.listdir(HYST_FOLDER)):
         if not file.endswith(".txt"):
             continue
         try:
-            with open(f"{folder}/{file}", "r", encoding="utf-8", errors="ignore") as f:
+            with open(f"{HYST_FOLDER}/{file}", "r", encoding="utf-8") as f:
                 content = decode_base64_if_needed(f.read())
                 for line in content.splitlines():
-                    line = line.strip()
-                    if line and ("hysteria2://" in line.lower() or "hy2://" in line.lower()):
+                    if "hysteria2://" in line.lower() or "hy2://" in line.lower():
                         fp = get_fingerprint(line)
                         if fp not in seen:
                             seen.add(fp)
                             configs.append(line)
         except:
-            continue
+            pass
     return configs
 
-# ==================== СКАЧИВАНИЕ ОДНОЙ ССЫЛКИ ====================
+# ==================== СКАЧИВАНИЕ ====================
 def fetch_one_url(url):
     for attempt in range(3):
         try:
-            r = requests.get(url, timeout=25, headers={"User-Agent": "Mozilla/5.0"})
+            r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
             r.raise_for_status()
             return url, decode_base64_if_needed(r.text)
         except:
-            time.sleep(2)
+            time.sleep(2 ** attempt)
     return url, None
 
-# ===================== ГЛАВНЫЙ ЗАПУСК =====================
-with open(INPUT_FILE, "r", encoding="utf-8", errors="ignore") as f:
+# ==================== ГЛАВНЫЙ ЗАПУСК ====================
+with open(INPUT_FILE, "r", encoding="utf-8") as f:
     urls = [clean_url(line) for line in f if clean_url(line) and not clean_url(line).startswith("#")]
 
 logger.info(f"Найдено {len(urls)} ссылок. Начинаем скачивание...")
@@ -152,68 +145,67 @@ logger.info(f"Найдено {len(urls)} ссылок. Начинаем скач
 merged = []
 seen = set()
 
-# Параллельное скачивание
 with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-    future_to_url = {executor.submit(fetch_one_url, url): url for url in urls}
-    
-    for future in as_completed(future_to_url):
+    futures = {executor.submit(fetch_one_url, url): url for url in urls}
+
+    for future in as_completed(futures):
         url, content = future.result()
-        if content:
-            added = 0
-            for line in content.splitlines():
-                line = line.strip()
-                if is_proxy_link(line):
-                    fp = get_fingerprint(line)
-                    if fp not in seen:
-                        seen.add(fp)
-                        merged.append(line)
-                        added += 1
-            if added > 0:
-                logger.info(f"+ {added} конфигов из {url[:70]}...")
+        if not content:
+            continue
+
+        added = 0
+        for line in content.splitlines():
+            line = line.strip()
+            if is_proxy_link(line):
+                fp = get_fingerprint(line)
+                if fp not in seen:
+                    seen.add(fp)
+                    merged.append(line)
+                    added += 1
+
+        if added > 0:
+            logger.info(f"+ {added} конфигов из {url[:70]}")
 
 print(f"\nВсего уникальных конфигов: {len(merged)}")
 
-# ==================== HYSTERIA2 (накопление) ====================
+# ==================== HYSTERIA2 ====================
 old_hy = load_existing_hysteria2()
-new_hy = [link for link in merged if get_proxy_type(link) == "hysteria2"]
-all_hysteria2 = old_hy + [x for x in new_hy if get_fingerprint(x) not in [get_fingerprint(y) for y in old_hy]]
+new_hy = [x for x in merged if get_proxy_type(x) == "hysteria2"]
+
+all_hysteria2 = old_hy + [
+    x for x in new_hy
+    if get_fingerprint(x) not in {get_fingerprint(y) for y in old_hy}
+]
 
 # ==================== СОХРАНЕНИЕ ====================
-def save_chunks(links, folder, prefix, max_per_file=MAX_LINKS_PER_FILE, max_size_mb=None):
+def save_chunks(links, folder, prefix):
     if not links:
         return
-    current = []
+    os.makedirs(folder, exist_ok=True)
+
     part = 1
-    for link in links:
-        current.append(link)
-        if len(current) >= max_per_file:
-            filename = f"{folder}/{prefix}_{part}.txt"
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write("\n".join(current) + "\n")
-            current = []
-            part += 1
-    if current:
+    for i in range(0, len(links), MAX_LINKS_PER_FILE):
+        chunk = links[i:i + MAX_LINKS_PER_FILE]
         filename = f"{folder}/{prefix}_{part}.txt"
         with open(filename, "w", encoding="utf-8") as f:
-            f.write("\n".join(current) + "\n")
+            f.write("\n".join(chunk) + "\n")
+        part += 1
 
-ru_links = [link for link in merged if is_russian_config(link)]
-world_links = [link for link in merged if not is_russian_config(link)]
+ru_links = [l for l in merged if is_russian_config(l)]
+world_links = [l for l in merged if not is_russian_config(l)]
 
 save_chunks(ru_links, RU_FOLDER, "ru")
 save_chunks(world_links, WORLD_FOLDER, "world")
-save_chunks(all_hysteria2, f"{TYPE_FOLDER}/hysteria2", "hysteria2", max_size_mb=MAX_HYSTERIA2_SIZE_MB)
+save_chunks(all_hysteria2, HYST_FOLDER, "hysteria2")
 
 for t in types:
     if t == "hysteria2":
         continue
-    links = [link for link in merged if get_proxy_type(link) == t]
-    if links:
-        save_chunks(links, f"{TYPE_FOLDER}/{t}", t)
+    links = [l for l in merged if get_proxy_type(l) == t]
+    save_chunks(links, f"{TYPE_FOLDER}/{t}", t)
 
-# Общий файл
 with open("merged_subs.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(merged))
 
-logger.info("🎉 Скрипт успешно завершён!")
-print("🎉 Готово! Hysteria2 копится, остальное — только свежее.")
+logger.info("🎉 Сборка завершена!")
+print("🎉 Готово!")
