@@ -1,0 +1,11 @@
+trojan://telegram-id-privatevpns@3.66.185.190:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#(S102)🇩🇪t.me/PrivateVPNs
+trojan://telegram-id-privatevpns@3.67.118.188:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#(S101)🇩🇪t.me/PrivateVPNs
+trojan://telegram-id-privatevpns@3.73.163.13:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#(S101)🇩🇪t.me/PrivateVPNs
+trojan://telegram-id-privatevpns@35.181.10.177:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#(S104)🇨🇵t.me/PrivateVPNs
+trojan://telegram-id-privatevpns@63.179.174.154:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@FreeConffning
+trojan://telegram-id-privatevpns@63.185.173.123:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#(S102)🇩🇪t.me/PrivateVPNs
+trojan://telegram-id-privatevpns@63.185.188.232:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#(S102)🇩🇪t.me/PrivateVPNs
+trojan://ylRh2jfDft@45.130.125.76:443?path=/?ed&security=tls&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=da.aananas.ir#@VPN_PASARGAD
+trojan://ypa8jqVoqQ@188.114.97.6:443?type=ws&security=tls&path=/720f09dba195249b423f771661162528/workers/services/view/Avaal/production/settings&host=ssss2.avaaal.ir&sni=ssss2.avaaal.ir&alpn=http/1.1&fp=chrome&allowInsecure=0#@VPN_PASARGAD
+trojan://ypa8jqVoqQ@188.114.97.6:443?type=ws&security=tls&path=/720f09dba195249b423f771661162528/workers/services/view/Avaal/production/settings&host=ssss2.avaaal.ir&sni=ssss2.avaaal.ir&alpn=http/1.1&fp=chrome&allowInsecure=1#@v2raybaaz (4)
+trojan://ypa8jqVoqQ@188.114.97.6:443?type=ws&security=tls&path=/720f09dba195249b423f771661162528/workers/services/view/Avaal/production/settings&host=ssss2.avaaal.ir&sni=ssss2.avaaal.ir&alpn=http/1.1&fp=chrome&allowInsecure=1#@v2raybaaz (5)
