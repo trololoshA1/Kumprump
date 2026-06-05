@@ -59,7 +59,11 @@ https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/githubmirror/
 ‎https://raw.githubusercontent.com/vsevjik/OBWLautoupd/refs/heads/main/ru_vless_reality.txt#OBWL
 ‎https://translate.yandex.ru/translate?url=https://raw.githubusercontent.com/ShadowException/VPN/refs/heads/main/configs/VPN-cat
 ‎https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/whitelist
+
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/RosTun/utf-8_gen.txt#RosTunnel
+
+https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/RosTun/utf-8_gen.txt#RosTunnel
+
 ‎https://ru-wbl.gitverse.site/wl/RosTun/Base64_wl.txt#RosTunnel
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/Zieng2%2FZieng2_vless_lite.txt
 ‎https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/Zieng2%2FZieng2_NowMeow.txt
