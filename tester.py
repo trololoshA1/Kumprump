@@ -20,22 +20,36 @@ MAX_PARALLEL = 100
 
 os.makedirs(TESTED_FOLDER, exist_ok=True)
 
+
+# ------------------ ПАРСИНГ HYSTERIA2 ------------------
 def parse_hy2(link):
-    if link.startswith("hysteria2://"):
-        link = link.replace("hysteria2://", "hy2://")
+    try:
+        if link.startswith("hysteria2://"):
+            link = link.replace("hysteria2://", "hy2://")
 
-    u = urlparse(link)
-    params = parse_qs(u.query)
+        u = urlparse(link)
+        params = parse_qs(u.query)
 
-    return {
-        "server": f"{u.hostname}:{u.port}",
-        "password": u.username,
-        "obfs": params.get("obfs", [""])[0],
-        "sni": params.get("sni", [""])[0] or u.hostname
-    }
+        # Если порта нет → ставим 443
+        port = u.port or 443
 
+        return {
+            "server": f"{u.hostname}:{port}",
+            "password": u.username,
+            "obfs": params.get("obfs", [""])[0],
+            "sni": params.get("sni", [""])[0] or u.hostname
+        }
+
+    except Exception as e:
+        raise ValueError(f"parse_error: {e}")
+
+
+# ------------------ ТЕСТ ОДНОГО ПРОКСИ ------------------
 async def test_proxy(link, port):
-    cfg = parse_hy2(link)
+    try:
+        cfg = parse_hy2(link)
+    except Exception as e:
+        return False, f"parse_error: {e}"
 
     config = {
         "log": {"disabled": True},
@@ -66,31 +80,47 @@ async def test_proxy(link, port):
             timeout=TEST_TIMEOUT
         ) as c:
             r = await c.get("https://api.ipify.org")
-            return r.status_code == 200
-    except:
-        return False
+            if r.status_code == 200:
+                return True, None
+            return False, f"bad_status: {r.status_code}"
+
+    except Exception as e:
+        return False, f"http_error: {e}"
+
     finally:
         proc.kill()
         os.remove(path)
 
+
+# ------------------ РАБОЧИЙ ПОТОК ------------------
+async def worker(i, link, good, bad, errors, sem):
+    port = 20000 + i
+    async with sem:
+        print(f"⏳ {link[:60]}...")
+        ok, err = await test_proxy(link, port)
+        if ok:
+            print("✅ OK")
+            good.append(link)
+        else:
+            print("❌ DEAD")
+            bad.append(link)
+            errors.append(f"{link}\n{err}\n\n")
+
+
+# ------------------ МАССОВЫЙ ТЕСТ ------------------
 async def test_all(links):
-    good, bad = [], []
+    good, bad, errors = [], [], []
     sem = asyncio.Semaphore(MAX_PARALLEL)
 
-    async def worker(i, link):
-        port = 20000 + i
-        async with sem:
-            print(f"⏳ {link[:60]}...")
-            if await test_proxy(link, port):
-                print("✅ OK")
-                good.append(link)
-            else:
-                print("❌ DEAD")
-                bad.append(link)
+    await asyncio.gather(*[
+        worker(i, link, good, bad, errors, sem)
+        for i, link in enumerate(links)
+    ])
 
-    await asyncio.gather(*[worker(i, link) for i, link in enumerate(links)])
-    return good, bad
+    return good, bad, errors
 
+
+# ------------------ ЗАГРУЗКА ССЫЛОК ------------------
 def load_all():
     links = []
     for file in Path(SUBS_FOLDER).glob("*.txt"):
@@ -101,11 +131,13 @@ def load_all():
                     links.append(line)
     return list(dict.fromkeys(links))
 
+
+# ------------------ ЗАПУСК ------------------
 print("🚀 Загружаем ссылки...")
 links = load_all()
 print(f"Найдено: {len(links)}")
 
-good, bad = asyncio.run(test_all(links))
+good, bad, errors = asyncio.run(test_all(links))
 
 print(f"\nРабочих: {len(good)}")
 print(f"Мёртвых: {len(bad)}")
@@ -116,4 +148,7 @@ with open(f"{TESTED_FOLDER}/good_hysteria2.txt", "w") as f:
 with open(f"{TESTED_FOLDER}/bad_hysteria2.txt", "w") as f:
     f.write("\n".join(bad))
 
-print("Готово!")
+with open(f"{TESTED_FOLDER}/errors.txt", "w") as f:
+    f.writelines(errors)
+
+print("🔥 Готово! Ошибки сохранены в tested/errors.txt")
