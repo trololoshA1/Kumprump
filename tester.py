@@ -1,27 +1,41 @@
 import os
-import re
 import json
 import time
 import tempfile
 import subprocess
 import httpx
 import asyncio
+from pathlib import Path
 
 # ==================== НАСТРОЙКИ ====================
-MERGED_FILE = "merged_subs.txt"
+SUBS_FOLDER = "subs/type/hysteria2"
 TESTED_FOLDER = "tested"
 
-# Только Hysteria2!
 TEST_TIMEOUT = 8
 SING_BOX_PORT = 1080
-MAX_PARALLEL = 25   # уменьшил, чтобы было стабильнее и быстрее
+MAX_PARALLEL = 25
 
 # ==================== ПАПКИ ====================
 os.makedirs(TESTED_FOLDER, exist_ok=True)
 
-# ==================== ВСПОМОГАТЕЛЬНЫЕ ====================
-def get_fingerprint(link):
-    return link.strip()
+# ==================== ЧИТАЕМ ВСЕ HYSTERIA2 ФАЙЛЫ ====================
+def load_all_hysteria_links():
+    links = []
+    folder = Path(SUBS_FOLDER)
+    
+    if not folder.exists():
+        print(f"❌ Папка {SUBS_FOLDER} не найдена!")
+        return []
+    
+    for file in folder.glob("*.txt"):
+        print(f"📂 Читаем файл: {file.name}")
+        with open(file, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and (line.lower().startswith("hysteria2://") or line.lower().startswith("hy2://")):
+                    links.append(line)
+    
+    return list(dict.fromkeys(links))  # убираем дубликаты
 
 # ==================== ТЕСТ ОДНОГО PROXY ====================
 async def test_proxy(proxy_link):
@@ -39,22 +53,16 @@ async def test_proxy(proxy_link):
         cfg.write(json.dumps(config))
 
     try:
-        # Запускаем sing-box
         proc = subprocess.Popen(
             ["sing-box", "-c", config_path],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
-        await asyncio.sleep(1.5)  # даём время запуститься
+        await asyncio.sleep(1.5)
 
         proxy_url = f"socks5://127.0.0.1:{SING_BOX_PORT}"
         
-        async with httpx.AsyncClient(
-            proxy=proxy_url, 
-            timeout=TEST_TIMEOUT
-        ) as client:
-            
-            # Быстрые тесты
+        async with httpx.AsyncClient(proxy=proxy_url, timeout=TEST_TIMEOUT) as client:
             for site in ["https://api.ipify.org", "https://cloudflare.com/cdn-cgi/trace"]:
                 try:
                     r = await client.get(site)
@@ -79,7 +87,7 @@ async def test_all(links):
 
     async def worker(link):
         async with sem:
-            print(f"⏳ Проверка: {link[:50]}...")
+            print(f"⏳ Проверка: {link[:60]}...")
             if await test_proxy(link):
                 print(f"✅ РАБОЧИЙ")
                 good.append(link)
@@ -91,10 +99,25 @@ async def test_all(links):
     return good, bad
 
 # ==================== ЗАПУСК ====================
-print("🚀 Начинаем тестирование Hysteria2...")
+print("🚀 Начинаем тестирование Hysteria2 из папки subs/type/hysteria2...")
 
-with open(MERGED_FILE, "r", encoding="utf-8") as f:
-    all_links = [l.strip() for l in f if l.strip()]
+all_links = load_all_hysteria_links()
+print(f"Найдено Hysteria2 ссылок: {len(all_links)}")
 
-# Фильтруем ТОЛЬКО hysteria2
-hysteria_links = [l for l in all_links if l.lower().startswith(("
+if not all_links:
+    print("❌ Нет ссылок для теста!")
+else:
+    good, bad = asyncio.run(test_all(all_links))
+
+    print(f"\n🎉 Готово!")
+    print(f"Рабочих: {len(good)}")
+    print(f"Мёртвых: {len(bad)}")
+
+    # Сохраняем результаты
+    with open(f"{TESTED_FOLDER}/good_hysteria2.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(good) + "\n" if good else "")
+
+    with open(f"{TESTED_FOLDER}/bad_hysteria2.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(bad) + "\n" if bad else "")
+
+    print("✅ Результаты сохранены в папку tested/")
