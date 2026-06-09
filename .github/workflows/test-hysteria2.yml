@@ -23,8 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install "httpx[socks]"
-          pip install socksio
+          pip install "httpx[socks]" socksio uvloop
 
       - name: Download latest sing-box
         run: |
@@ -52,8 +51,6 @@ jobs:
 
           echo "🔧 Проверяем версию:"
           sing-box version
-
-          echo "✅ sing-box установлен (версия $TAG)"
 
       - name: Run Hysteria2 Tester
         run: python tester.py
