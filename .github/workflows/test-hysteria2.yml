@@ -33,16 +33,24 @@ jobs:
           FILE="sing-box-${TAG#v}-linux-amd64.tar.gz"
           URL="https://github.com/SagerNet/sing-box/releases/download/${TAG}/${FILE}"
 
-          echo "Скачиваем: $URL"
+          echo "🧹 Удаляем старые версии..."
+          rm -rf sing-box-* || true
+
+          echo "⬇️ Скачиваем: $URL"
           wget -q "$URL" -O sing-box.tar.gz
 
+          echo "📦 Распаковываем..."
           tar -xzf sing-box.tar.gz
 
-          FOLDER=$(ls -d sing-box-*/ 2>/dev/null | head -n 1 | tr -d '/')
+          FOLDER=$(ls -d sing-box-*/ | head -n 1 | tr -d '/')
+          echo "📁 Найдена папка: $FOLDER"
+
           chmod +x "$FOLDER/sing-box"
           sudo cp "$FOLDER/sing-box" /usr/local/bin/
 
+          echo "🔧 Проверяем версию:"
           sing-box version
+
           echo "✅ sing-box установлен (версия $TAG)"
 
       - name: Run Hysteria2 Tester
