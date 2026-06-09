@@ -1,12 +1,12 @@
 name: Test Hysteria2
 
 on:
-  workflow_dispatch:           # можно запускать вручную
+  workflow_dispatch:
   schedule:
-    - cron: "0 */4 * * *"      # каждые 4 часа
+    - cron: "0 */4 * * *"
   push:
     paths:
-      - 'subs/type/hysteria2/**'   # если обновляются файлы в этой папке
+      - 'subs/type/hysteria2/**'
 
 jobs:
   test:
@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,25 +24,22 @@ jobs:
       - name: Install dependencies
         run: pip install httpx
 
-      - name: Download and setup sing-box
+      - name: Setup sing-box from repo
         run: |
-          wget -q https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-1.13.12-linux-amd64.tar.gz
-          tar -xzf sing-box-1.13.12-linux-amd64.tar.gz
-          sudo mv sing-box-1.13.12-linux-amd64/sing-box /usr/local/bin/
-          chmod +x /usr/local/bin/sing-box
-          echo "sing-box version:"
+          chmod +x sing-box-1.13.12-linux-amd64/sing-box
+          sudo cp sing-box-1.13.12-linux-amd64/sing-box /usr/local/bin/
           sing-box version
 
       - name: Run Hysteria2 Tester
         run: python tester.py
 
-      - name: Commit and push test results
+      - name: Commit and push results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add tested/
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "No changes"
           else
             git commit -m "Auto test Hysteria2 - $(date +'%Y-%m-%d %H:%M UTC')"
             git push
