@@ -9,6 +9,7 @@ import uvloop
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
+# Ускоряем asyncio
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 SUBS_FOLDER = "subs/type/hysteria2"
