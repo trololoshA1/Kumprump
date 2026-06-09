@@ -1,0 +1,52 @@
+name: Test Hysteria2
+
+on:
+  workflow_dispatch:     # можно запускать вручную
+  schedule:
+    - cron: "0 */4 * * *"   # каждые 4 часа
+  push:
+    paths:
+      - 'merged_subs.txt'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install httpx
+
+      - name: Download sing-box
+        run: |
+          wget -q https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-1.13.12-linux-amd64.tar.gz
+          tar -xzf sing-box-1.13.12-linux-amd64.tar.gz
+          sudo mv sing-box-1.13.12-linux-amd64/sing-box /usr/local/bin/
+          chmod +x /usr/local/bin/sing-box
+          sing-box version
+
+      - name: Run Hysteria2 Tester
+        run: python tester.py
+
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add tested/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto test Hysteria2 - $(date +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
