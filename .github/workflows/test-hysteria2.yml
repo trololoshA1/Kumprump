@@ -24,15 +24,21 @@ jobs:
       - name: Install dependencies
         run: pip install httpx
 
-      - name: Download sing-box
+      - name: Download latest sing-box
         run: |
-          echo "Скачиваем sing-box..."
-          wget -q https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-1.13.12-linux-amd64.tar.gz -O sing-box.tar.gz
+          echo "🔍 Получаем самую новую версию sing-box..."
+          TAG=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep '"tag_name"' | cut -d '"' -f 4)
+          echo "Последняя версия: $TAG"
+          
+          wget -q "https://github.com/SagerNet/sing-box/releases/download/\( {TAG}/sing-box- \){TAG#v}-linux-amd64.tar.gz" -O sing-box.tar.gz
           tar -xzf sing-box.tar.gz
-          chmod +x sing-box-1.13.12-linux-amd64/sing-box
-          sudo cp sing-box-1.13.12-linux-amd64/sing-box /usr/local/bin/
+          
+          # Находим папку (на всякий случай)
+          FOLDER=$(ls -d sing-box-*/ 2>/dev/null | head -n 1 | tr -d '/')
+          chmod +x $FOLDER/sing-box
+          sudo cp $FOLDER/sing-box /usr/local/bin/
           sing-box version
-          echo "sing-box успешно установлен"
+          echo "✅ sing-box установлен (версия $TAG)"
 
       - name: Run Hysteria2 Tester
         run: python tester.py
