@@ -8,7 +8,7 @@ on:
     paths:
       - 'subs/type/hysteria2/**'
 
-jobs:
+jobos:
   test:
     runs-on: ubuntu-latest
 
