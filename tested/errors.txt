@@ -1003,9 +1003,6 @@ http_error: All connection attempts failed
 hysteria2://Masir_Sefid@18.157.222.169:8880?sni=free.masir-sefid.shop&insecure=0&allowInsecure=0&obfs=salamander&obfs-password=Masir_Sefid# By EbraSha 🔌
 http_error: All connection attempts failed
 
-hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#@meliproxyy
-parse_error: Port could not be cast to integer value as '-1'
-
 hysteria2://Masir_Sefid@195.15.253.119:443?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free2.masir-sefid-1.my# By EbraSha 🚨
 http_error: All connection attempts failed
 
@@ -1017,6 +1014,9 @@ http_error: All connection attempts failed
 
 hysteria2://Masir_Sefid@195.15.254.245:444?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid-1.my# By EbraSha 🛸
 http_error: All connection attempts failed
+
+hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#@meliproxyy
+parse_error: Port could not be cast to integer value as '-1'
 
 hysteria2://Masir_Sefid@34.196.169.182:1040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🕶️
 http_error: All connection attempts failed
@@ -1123,9 +1123,6 @@ http_error: All connection attempts failed
 hysteria2://@Masir_Sefid@18.157.222.169:54040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#@meliproxyy
 http_error: All connection attempts failed
 
-hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha ⚔️
-parse_error: Port could not be cast to integer value as '-1'
-
 hysteria2://@Masir_Sefid@18.157.222.169:54040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#🇩🇪54276 | ⚡️Telegram = t.me/SOSkeyNET
 http_error: All connection attempts failed
 
@@ -1137,6 +1134,9 @@ http_error: All connection attempts failed
 
 hysteria2://Masir_Sefid@18.157.222.169:444?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#@meliproxyy
 http_error: All connection attempts failed
+
+hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha ⚔️
+parse_error: Port could not be cast to integer value as '-1'
 
 hysteria2://masir_sefid@18.157.51.145:443?security=tls&obfs=salamander&obfs-password=masir_sefid&insecure=0&mport=443,2053,2083,2087,2096,8443&sni=content.masir-sefid.shop#@meliproxyy
 http_error: All connection attempts failed
@@ -1669,9 +1669,6 @@ http_error: All connection attempts failed
 hysteria2://@Masir_Sefid@18.157.222.169:1040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#54274
 http_error: All connection attempts failed
 
-hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🔌
-parse_error: Port could not be cast to integer value as '-1'
-
 hysteria2://@Masir_Sefid@18.157.222.169:4040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#54275
 http_error: All connection attempts failed
 
@@ -1689,6 +1686,9 @@ http_error: All connection attempts failed
 
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B054061%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me/SO...
 http_error: All connection attempts failed
+
+hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🔌
+parse_error: Port could not be cast to integer value as '-1'
 
 hysteria2://b880e510-8196-44bb-b715-781a9461b4a0@aestheticperforator.ru:8443?insecure=0&sni=aestheticperforator.ru#%F0%9F%87%B8%F0%9F%87%AA54087%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me/SO...
 http_error: All connection attempts failed
@@ -1861,6 +1861,9 @@ http_error: All connection attempts failed
 hysteria2://%40Masir_Sefid@18.157.222.169:4040?insecure=0&sni=free.masir-sefid.shop&obfs=salamander&obfs-password=Masir_Sefid#%F0%9F%87%A9%F0%9F%87%AA%40FreakConfig
 http_error: All connection attempts failed
 
+hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🐺
+parse_error: Port could not be cast to integer value as '-1'
+
 hysteria2://%40Masir_Sefid@18.157.222.169:44044?insecure=0&sni=free.masir-sefid.shop&obfs=salamander&obfs-password=Masir_Sefid#%F0%9F%87%A9%F0%9F%87%AA%40FreakConfig%20%231
 http_error: All connection attempts failed
 
@@ -1908,9 +1911,6 @@ http_error: All connection attempts failed
 
 hysteria2://Masir_Sefid@84.234.31.190:4040?insecure=0&sni=free3.masir-sefid-1.my&obfs=salamander&obfs-password=Masir_Sefid#%40internet_azad_2026%20%2314
 http_error: All connection attempts failed
-
-hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🐺
-parse_error: Port could not be cast to integer value as '-1'
 
 hysteria2://Masir_Sefid@84.234.31.190:54040?insecure=0&sni=free3.masir-sefid-1.my&obfs=salamander&obfs-password=Masir_Sefid#%40internet_azad_2026%20%2315
 http_error: All connection attempts failed
@@ -2344,6 +2344,9 @@ http_error: All connection attempts failed
 hysteria2://masir_sefid@18.194.63.255:443?insecure=0&sni=content.masir-sefid.shop&obfs=salamander&obfs-password=masir_sefid# By EbraSha 🐉
 http_error: All connection attempts failed
 
+hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🤖
+parse_error: Port could not be cast to integer value as '-1'
+
 hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?security=tls&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3&insecure=0&sni=hy2.aspidnet.xyz# By EbraSha 📛
 http_error: All connection attempts failed
 
@@ -2391,9 +2394,6 @@ http_error: All connection attempts failed
 
 hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@sg2.yuntong.click:443?insecure=0&sni=sg2.yuntong.click&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=#
 http_error: All connection attempts failed
-
-hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🤖
-parse_error: Port could not be cast to integer value as '-1'
 
 hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@sg2.yuntong.click:443?security=tls&obfs=salamander&obfs-password=eNM%2FNfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo%3D&insecure=0&sni=sg2.yuntong.click#
 http_error: All connection attempts failed
@@ -2545,6 +2545,9 @@ http_error: All connection attempts failed
 hysteria2://zhangyang@130.61.50.75:6443/?insecure=1&sni=dash.cloudflare.com# By EbraSha 🛡️
 http_error: All connection attempts failed
 
+hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#
+parse_error: Port could not be cast to integer value as '-1'
+
 hysteria2://zhangyang@130.61.50.75:6443?insecure=1&sni=dash.cloudflare.com# By EbraSha ⚔️
 http_error: All connection attempts failed
 
@@ -2553,9 +2556,6 @@ http_error: All connection attempts failed
 
 hysteria2://@Masir_Sefid@18.157.222.169:4040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#برای اتصال دائمی جوین شو🏵 TelegramID ⌲Express_freevpn 🪩
 http_error: All connection attempts failed
-
-hysteria2://@:-1?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#
-parse_error: Port could not be cast to integer value as '-1'
 
 hysteria2://@Masir_Sefid@18.157.222.169:443?sni=free.masir-sefid.shop&insecure=0&allowInsecure=0&obfs=salamander&obfs-password=Masir_Sefid#https://t.me/FREE_VPN02
 http_error: All connection attempts failed
@@ -5230,6 +5230,9 @@ http_error: All connection attempts failed
 hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@178.18.147.66:29900?headerType=none&encryption=none&sni=www.microsoft.com&insecure=1#%F0%9F%8C%90%20Anycast-IP%20%7C%20%5BIPv6%5D%20%7C%20%5BBL%5D
 http_error: All connection attempts failed
 
+hysteria2://68652433-b940-4d49-9297-702c49ff410d@45.130.166.185:23066,20000-40000?insecure=1&sni=net-64.yuetong.online#B%20-%20%F0%9F%87%AF%F0%9F%87%B5%20JP%2003%20TG%3A%20%40nodpai
+parse_error: Port could not be cast to integer value as '23066,20000-40000'
+
 hy2://2545ab46-6306-4f2b-badd-5531f384d55f@167.17.178.128:10086/?insecure=1&sni=fr1.xiaoliyu.cyou&obfs=salamander&obfs-password=T@T*FP7uq=!t#👀3@oneclickvpnkeys
 http_error: All connection attempts failed
 
@@ -5256,9 +5259,6 @@ http_error: All connection attempts failed
 
 hy2://qQe1z5kU8kN6SlKnDt9Ru3Qp@13.250.25.232:443/?insecure=1&sni=https://t.me/WangCai2🇨🇳#🇸🇬SG_@WangCai_8
 http_error: All connection attempts failed
-
-hysteria2://68652433-b940-4d49-9297-702c49ff410d@45.130.166.185:23066,20000-40000?insecure=1&sni=net-64.yuetong.online#B%20-%20%F0%9F%87%AF%F0%9F%87%B5%20JP%2003%20TG%3A%20%40nodpai
-parse_error: Port could not be cast to integer value as '23066,20000-40000'
 
 hy2://qQe1z5kU8kN6SlKnDt9Ru3Qp@13.250.60.252:443/?insecure=1&sni=https://t.me/WangCai2🇨🇳#🇸🇬SG_@WangCai_8
 http_error: All connection attempts failed
@@ -5833,6 +5833,12 @@ http_error: All connection attempts failed
 hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@3.6.91.169:443?insecure=1&sni=https://t.me/WangCai2#%F0%9F%87%AE%F0%9F%87%B3IN_%40WangCai_8%20%232
 http_error: All connection attempts failed
 
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a0c:4ac1:8::121:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org#
+parse_error: '2a0c:4ac1:8::121:35000' does not appear to be an IPv4 or IPv6 address
+
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a14:3f87:f001:1a::a:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org#
+parse_error: '2a14:3f87:f001:1a::a:35000' does not appear to be an IPv4 or IPv6 address
+
 hysteria2://6b5a9259-c7de-45f0-b4de-e89db7850d0c@tw40.453521.xyz:8080?sni=tw40.453521.xyz#C%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2016%20TG%3A%20%40nodpai
 http_error: All connection attempts failed
 
@@ -5859,21 +5865,6 @@ http_error: All connection attempts failed
 
 hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@vpn-jp-005.fastervpn.world:443/?insecure=1&sni=vpn-jp-005.fastervpn.world#%F0%9F%87%AF%F0%9F%87%B5%20Japan%2C%20Chiyoda%20City%20%7C%20%5BBL%5D
 http_error: All connection attempts failed
-
-hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a0c:4ac1:8::121:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org#
-parse_error: '2a0c:4ac1:8::121:35000' does not appear to be an IPv4 or IPv6 address
-
-hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a14:3f87:f001:1a::a:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org#
-parse_error: '2a14:3f87:f001:1a::a:35000' does not appear to be an IPv4 or IPv6 address
-
-hysteria2://68652433-b940-4d49-9297-702c49ff410d@45.130.166.185:23066,23066,20000-40000?insecure=1&fp=&sni=net-64.yuetong.online&obfs=&obfs-password=#%F0%9F%87%AF%F0%9F%87%B5JP_1%7C1.2MB/s
-parse_error: Port could not be cast to integer value as '23066,23066,20000-40000'
-
-hysteria2://68652433-b940-4d49-9297-702c49ff410d@45.130.166.185:26526,23066,20000-40000?insecure=1&sni=net-64.yuetong.online#%F0%9F%87%AF%F0%9F%87%B5JP_2%7C1.9MB/s
-parse_error: Port could not be cast to integer value as '26526,23066,20000-40000'
-
-hysteria2://Yet-Another-Public-Config-1@[2a14:3f87:f001:13::a:36400]:443?security=tls&obfs=salamander&obfs-password=Yet-Another-Public-Config-1&insecure=1&sni=YAPC-1.afshin.ir#
-parse_error: '2a14:3f87:f001:13::a:36400' does not appear to be an IPv4 or IPv6 address
 
 hysteria2://8de68ddc-e24e-4224-9c2a-457d4a8176df@172.105.239.243:18451?sni=www.iq.com&insecure=1#JP   HYSTERIA2-TCP-NTLS - Akamai Connected Cloud  172.105.239.243
 http_error: All connection attempts failed
@@ -5925,6 +5916,15 @@ http_error: All connection attempts failed
 
 hysteria2://642dc0b9-6481-4d84-ad60-3586e870f263@xg.xn--mes13n8pi8x2b.shop:21494?mport=21001-21999&insecure=0#
 http_error: All connection attempts failed
+
+hysteria2://68652433-b940-4d49-9297-702c49ff410d@45.130.166.185:23066,23066,20000-40000?insecure=1&fp=&sni=net-64.yuetong.online&obfs=&obfs-password=#%F0%9F%87%AF%F0%9F%87%B5JP_1%7C1.2MB/s
+parse_error: Port could not be cast to integer value as '23066,23066,20000-40000'
+
+hysteria2://68652433-b940-4d49-9297-702c49ff410d@45.130.166.185:26526,23066,20000-40000?insecure=1&sni=net-64.yuetong.online#%F0%9F%87%AF%F0%9F%87%B5JP_2%7C1.9MB/s
+parse_error: Port could not be cast to integer value as '26526,23066,20000-40000'
+
+hysteria2://Yet-Another-Public-Config-1@[2a14:3f87:f001:13::a:36400]:443?security=tls&obfs=salamander&obfs-password=Yet-Another-Public-Config-1&insecure=1&sni=YAPC-1.afshin.ir#
+parse_error: '2a14:3f87:f001:13::a:36400' does not appear to be an IPv4 or IPv6 address
 
 hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com#
 parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
@@ -6439,14 +6439,14 @@ http_error: All connection attempts failed
 hysteria2://ByBeTp5j5C@83.147.253.96:2053?insecure=1&sni=webservice-admin.tgju.org&obfs=salamander&obfs-password=MiracleV2RayyNGvpnfreeconf#⚡ b2n.ir/v2ray-configs | 683
 http_error: All connection attempts failed
 
-hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ⚔️
-parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
-
 hysteria2://22f2c759db51b3d0@109.120.135.123:12122?insecure=1&sni=www.bing.com&obfs=salamander&obfs-password=de8287cd33b05fa3#⚡ b2n.ir/v2ray-configs | 132
 http_error: All connection attempts failed
 
 hysteria2://d3da4e16-9bef-4e54-9bd9-960d32740392@sb1.oomz.ru:30000?insecure=1&sni=bing.com#⚡ b2n.ir/v2ray-configs | 856
 http_error: All connection attempts failed
+
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ⚔️
+parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
 
 hysteria2://J9MCnSyy8y@91.99.225.11:443?insecure=1&sni=refersion.com&obfs=salamander&obfs-password=Jsbdksj@V2RayyNGvpn$Miracle#⚡ b2n.ir/v2ray-configs | 248
 http_error: All connection attempts failed
@@ -6496,15 +6496,6 @@ http_error: All connection attempts failed
 hysteria2://2b195c17-5ff5-4b0d-a809-210b92212394@lundun1.nezhasu.com:443?insecure=1&sni=lundun1.nezhasu.com#⚡ b2n.ir/v2ray-configs | 256
 http_error: All connection attempts failed
 
-hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🔋
-parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
-
-hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 📛
-parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
-
-hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ♠️
-parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
-
 hysteria2://5f89ac2a-b6d6-4c66-98d8-39c4d552138c@206.71.158.41:35000?insecure=1&sni=jnir.pichondan.com&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi#⚡ b2n.ir/v2ray-configs | 546
 http_error: All connection attempts failed
 
@@ -6546,6 +6537,15 @@ http_error: All connection attempts failed
 
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@tw.9966690.xyz:30000?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NT6iNA==#B%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2014%20TG%3A%20%40nodpai
 http_error: All connection attempts failed
+
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🔋
+parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
+
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 📛
+parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
+
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha ♠️
+parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
 
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@tw.9966690.xyz:40000?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NT6iNA==#A%20-%20%F0%9F%87%B9%F0%9F%87%BC%20TW%2008%20TG%3A%20%40nodpai
 http_error: All connection attempts failed
@@ -6604,6 +6604,12 @@ http_error: All connection attempts failed
 hysteria2://hysteria2_fastlane_fur39yrgc:4hwuV1rbgM9x9MqtdBRynHns19kPd32F@2.27.28.103:1935?sni=de4.h.fastlanehosting.ru#%F0%9F%87%B5%F0%9F%87%B1%20Poland%2C%20Warsaw%20%28Praga%20Po%C5%82udnie%29%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D
 http_error: All connection attempts failed
 
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🎯
+parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
+
+hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🖥️
+parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
+
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60005?insecure=1&obfs=salamander&obfs-password=ZDQxZDhjZDk4ZFAwYjIwNA==#
 http_error: All connection attempts failed
 
@@ -6618,12 +6624,6 @@ http_error: All connection attempts failed
 
 hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@45.92.218.132:443?sni=holz6.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%20%5B%2ACIDR%5D
 http_error: All connection attempts failed
-
-hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🎯
-parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
-
-hysteria2://dongtaiwang.com@[2001:bc8:32d7:302::11:20088]:443?security=tls&insecure=1&sni=apple.com# By EbraSha 🖥️
-parse_error: '2001:bc8:32d7:302::11:20088' does not appear to be an IPv4 or IPv6 address
 
 hysteria2://65bc8227-48db-4993-9e9d-68394de672a1@152.89.253.116:443?sni=holz9.api3-max.ru&pinSHA256=chrome#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Aubervilliers%20%7C%20%5BBL%5D
 http_error: All connection attempts failed
@@ -8476,12 +8476,6 @@ http_error: All connection attempts failed
 hysteria2://642dc0b9-6481-4d84-ad60-3586e870f263@agt.xn--mes13n8pi8x2b.shop:21654?mport=21001-21999&insecure=0# By EbraSha 💻
 http_error: All connection attempts failed
 
-hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a0c:4ac1:8::121:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 💎
-parse_error: '2a0c:4ac1:8::121:35000' does not appear to be an IPv4 or IPv6 address
-
-hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a14:3f87:f001:1a::a:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 💣
-parse_error: '2a14:3f87:f001:1a::a:35000' does not appear to be an IPv4 or IPv6 address
-
 hysteria2://642dc0b9-6481-4d84-ad60-3586e870f263@mg.xn--mes13n8pi8x2b.shop:21349?mport=21001-21999&insecure=0# By EbraSha 🕹️
 http_error: All connection attempts failed
 
@@ -8490,6 +8484,12 @@ http_error: All connection attempts failed
 
 hysteria2://642dc0b9-6481-4d84-ad60-3586e870f263@rb.xn--mes13n8pi8x2b.shop:21545?mport=21001-21999&insecure=0# By EbraSha 💣
 http_error: All connection attempts failed
+
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a0c:4ac1:8::121:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 💎
+parse_error: '2a0c:4ac1:8::121:35000' does not appear to be an IPv4 or IPv6 address
+
+hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@[2a14:3f87:f001:1a::a:35000]:443?security=tls&obfs=salamander&obfs-password=%40JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 💣
+parse_error: '2a14:3f87:f001:1a::a:35000' does not appear to be an IPv4 or IPv6 address
 
 hysteria2://642dc0b9-6481-4d84-ad60-3586e870f263@rb.xn--mes13n8pi8x2b.shop:21842?mport=21001-21999&insecure=0# By EbraSha 📼
 http_error: All connection attempts failed
@@ -14563,12 +14563,6 @@ http_error: All connection attempts failed
 hysteria2://Masir_Sefid@18.157.222.169:4040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#48290
 http_error: All connection attempts failed
 
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#@filembad
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#🖲️79@oneclickvpnkeys
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
 hysteria2://Masir_Sefid@18.157.222.169:44044?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#48292
 http_error: All connection attempts failed
 
@@ -14583,6 +14577,12 @@ http_error: All connection attempts failed
 
 hysteria2://Masir_Sefid@18.157.222.169:4040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#@internet_azad_2026🇩🇪
 http_error: All connection attempts failed
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#@filembad
+parse_error: Port could not be cast to integer value as '443,500-56000'
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#🖲️79@oneclickvpnkeys
+parse_error: Port could not be cast to integer value as '443,500-56000'
 
 hysteria2://Masir_Sefid@18.157.222.169:54040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free.masir-sefid.shop#@internet_azad_2026🇩🇪
 http_error: All connection attempts failed
@@ -15037,9 +15037,6 @@ http_error: All connection attempts failed
 hysteria2://Masir_Sefid@34.196.169.182:20830?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#@internet_azad_2025 рҹ•ҠвӯҗпёҸ(11)
 http_error: All connection attempts failed
 
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#рҹ–ІпёҸ79@oneclickvpnkeys
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
 hysteria2://Masir_Sefid@34.196.169.182:20830?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#вҡЎ@V2ray_official
 http_error: All connection attempts failed
 
@@ -15078,6 +15075,9 @@ http_error: All connection attempts failed
 
 hysteria2://Masir_Sefid@65.109.216.181:4040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=qs.masir-sefid.shop#рқҗғрқҗҖрқҗӢрқҗ“рқҗҺрқҗҚ рқҗҸрқҗҲрқҗҚрқҗҶ
 http_error: All connection attempts failed
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#рҹ–ІпёҸ79@oneclickvpnkeys
+parse_error: Port could not be cast to integer value as '443,500-56000'
 
 hysteria2://Masir_Sefid@65.109.216.181:444?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=qs.masir-sefid.shop#рқҗғрқҗҖрқҗӢрқҗ“рқҗҺрқҗҚ рқҗҸрқҗҲрқҗҚрқҗҶ
 http_error: All connection attempts failed
@@ -15196,11 +15196,11 @@ http_error: All connection attempts failed
 hysteria2://Masir_Sefid@34.196.169.182:54040?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 💻
 http_error: All connection attempts failed
 
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop# By EbraSha 🧪
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
 hysteria2://Masir_Sefid@34.196.169.182:59826?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 🤖
 http_error: All connection attempts failed
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop# By EbraSha 🧪
+parse_error: Port could not be cast to integer value as '443,500-56000'
 
 hysteria2://Masir_Sefid@34.196.169.182:8880?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop# By EbraSha 📱
 http_error: All connection attempts failed
@@ -15685,11 +15685,11 @@ http_error: All connection attempts failed
 hysteria2://github.com/Alvin9999-newpac/fanqiang@62.210.26.173:64772?sni=bing.com&insecure=1#🇫🇷49582
 http_error: All connection attempts failed
 
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
 hysteria2://masir_sefid@18.194.63.255:443?security=tls&obfs=salamander&obfs-password=masir_sefid&insecure=0&mport=443,500-56000&sni=content.masir-sefid.shop#🌐سرور
 http_error: All connection attempts failed
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#
+parse_error: Port could not be cast to integer value as '443,500-56000'
 
 hysteria2://Masir_Sefid@195.15.254.245:443?sni=free.masir-sefid-1.my&insecure=0&obfs=salamander#CH   HYSTERIA2-TCP-NTLS - Infomaniak Network SA  195.15.254.245
 http_error: All connection attempts failed
@@ -15709,9 +15709,6 @@ http_error: All connection attempts failed
 hysteria2://9d0f6021-e1e3-47cd-a18e-722dd7f1c2ee@154.85.18.134:443?sni=www.bing.com&insecure=1&allowInsecure=1&mport=55000-56000#
 http_error: All connection attempts failed
 
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop# By EbraSha 🐉
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
 hysteria2://IG9Sundefinedvx6RJ@47.76.94.197:58771?insecure=1&sni=go.microsoft.com#%F0%9F%87%AD%F0%9F%87%B049585%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me/SO...
 http_error: All connection attempts failed
 
@@ -15720,6 +15717,9 @@ http_error: All connection attempts failed
 
 hysteria2://dongtaiwang.com@62.210.124.146:22000/?insecure=1&sni=www.microsoft.com#FR-@VPNine1
 http_error: All connection attempts failed
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop# By EbraSha 🐉
+parse_error: Port could not be cast to integer value as '443,500-56000'
 
 hysteria2://e3a5bb40be52de65@89.251.26.111:55555?insecure=1&sni=apps.apple.com#%F0%9F%87%AD%F0%9F%87%B049589%20%7C%20%E2%9A%A1%EF%B8%8FTelegram%20%3D%20t.me/SO...
 http_error: All connection attempts failed
@@ -15808,14 +15808,14 @@ http_error: All connection attempts failed
 hysteria2://Masir_Sefid@84.234.29.71:443?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free2.masir-sefid.shop# By EbraSha 📼
 http_error: All connection attempts failed
 
-hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#🌐سرور
-parse_error: Port could not be cast to integer value as '443,500-56000'
-
 hysteria2://Masir_Sefid@84.234.29.71:8880?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=free2.masir-sefid.shop# By EbraSha 🚬
 http_error: All connection attempts failed
 
 hysteria2://Yet-Another-Public-Config-1@206.71.158.37:35000?security=tls&obfs=salamander&obfs-password=Yet-Another-Public-Config-1&insecure=1&sni=YAPC-1.afshin.ir&note=@FreeOnlineVPN# By EbraSha 🛸
 http_error: All connection attempts failed
+
+hysteria2://masir_sefid@3.121.136.75:443,500-56000/?obfs=salamander&obfs-password=masir_sefid&sni=content.masir-sefid.shop#🌐سرور
+parse_error: Port could not be cast to integer value as '443,500-56000'
 
 hysteria2://b4bd0613-ff7c-4f2f-954d-185915e6ddad@5.175.249.174:35000?security=tls&obfs=salamander&obfs-password=@JavidnamanIran-Javid-SHAH-KingRezaPahlavi&insecure=0&sni=api.kermanshahi.org# By EbraSha 🌌
 http_error: All connection attempts failed
