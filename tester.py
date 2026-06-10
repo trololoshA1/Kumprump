@@ -18,7 +18,19 @@ MAX_PARALLEL = 40
 
 os.makedirs(TESTED_FOLDER, exist_ok=True)
 
-def parse_hy2(link):
+# ------------------ АВТООПРЕДЕЛЕНИЕ ТИПА ------------------
+def detect_type(params):
+    if "obfs-password" in params:
+        return "hysteria1"
+    if params.get("obfs", [""])[0] == "salamander":
+        return "hysteria1"
+    if params.get("security", [""])[0] == "tls":
+        return "hysteria1"
+    return "hysteria2"
+
+
+# ------------------ ПАРСИНГ ------------------
+def parse_link(link):
     if link.startswith("hysteria2://"):
         link = link.replace("hysteria2://", "hy2://")
 
@@ -30,29 +42,51 @@ def parse_hy2(link):
     password = u.username or ""
 
     obfs = params.get("obfs", [""])[0]
+    obfs_pw = params.get("obfs-password", [""])[0]
     sni = params.get("sni", [""])[0] or u.hostname
 
+    link_type = detect_type(params)
+
     return {
+        "type": link_type,
         "server": server,
         "password": password,
         "obfs": obfs,
+        "obfs_pw": obfs_pw,
         "sni": sni
     }
 
+
+# ------------------ ТЕСТ ОДНОГО ПРОКСИ ------------------
 async def test_proxy(link, port):
     try:
-        cfg = parse_hy2(link)
+        cfg = parse_link(link)
     except Exception as e:
         return False, f"parse_error: {e}"
 
-    config = {
-        "log": {"level": "debug"},
-        "inbounds": [{
-            "type": "socks",
-            "listen": "127.0.0.1",
-            "listen_port": port
-        }],
-        "outbounds": [{
+    # ---------- HYSTERIA1 ----------
+    if cfg["type"] == "hysteria1":
+        outbound = {
+            "type": "hysteria",
+            "server": cfg["server"],
+            "auth": {
+                "type": "string",
+                "password": cfg["password"]
+            },
+            "tls": {
+                "enabled": True,
+                "server_name": cfg["sni"],
+                "insecure": True
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": cfg["obfs_pw"]
+            }
+        }
+
+    # ---------- HYSTERIA2 ----------
+    else:
+        outbound = {
             "type": "hysteria2",
             "server": cfg["server"],
             "password": cfg["password"],
@@ -63,11 +97,19 @@ async def test_proxy(link, port):
                 "server_name": cfg["sni"],
                 "insecure": True
             }
-        }]
-    }
+        }
+        if cfg["obfs"]:
+            outbound["obfs"] = cfg["obfs"]
 
-    if cfg["obfs"]:
-        config["outbounds"][0]["obfs"] = cfg["obfs"]
+    config = {
+        "log": {"level": "error"},
+        "inbounds": [{
+            "type": "socks",
+            "listen": "127.0.0.1",
+            "listen_port": port
+        }],
+        "outbounds": [outbound]
+    }
 
     with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(json.dumps(config))
@@ -82,7 +124,6 @@ async def test_proxy(link, port):
 
     await asyncio.sleep(1.0)
 
-    # читаем stderr
     err = proc.stderr.read()
     if err.strip():
         return False, f"singbox_error: {err}"
@@ -104,6 +145,8 @@ async def test_proxy(link, port):
         proc.kill()
         os.remove(path)
 
+
+# ------------------ ПОТОК ------------------
 async def worker(i, link, good, bad, errors, sem):
     port = 20000 + i
     async with sem:
@@ -117,6 +160,8 @@ async def worker(i, link, good, bad, errors, sem):
             bad.append(link)
             errors.append(f"{link}\n{err}\n\n")
 
+
+# ------------------ МАССОВЫЙ ТЕСТ ------------------
 async def test_all(links):
     good, bad, errors = [], [], []
     sem = asyncio.Semaphore(MAX_PARALLEL)
@@ -128,16 +173,20 @@ async def test_all(links):
 
     return good, bad, errors
 
+
+# ------------------ ЗАГРУЗКА ------------------
 def load_all():
     links = []
     for file in Path(SUBS_FOLDER).glob("*.txt"):
         with open(file, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
-                if line.startswith(("hysteria2://", "hy2://")):
+                if line.startswith(("hysteria2://", "hy2://", "hysteria://")):
                     links.append(line)
     return list(dict.fromkeys(links))
 
+
+# ------------------ ЗАПУСК ------------------
 print("🚀 Загружаем ссылки...")
 links = load_all()
 print(f"Найдено: {len(links)}")
