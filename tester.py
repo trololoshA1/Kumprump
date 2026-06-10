@@ -46,7 +46,7 @@ async def test_proxy(link, port):
         return False, f"parse_error: {e}"
 
     config = {
-        "log": {"disabled": True},
+        "log": {"level": "debug"},
         "inbounds": [{
             "type": "socks",
             "listen": "127.0.0.1",
@@ -73,8 +73,19 @@ async def test_proxy(link, port):
         f.write(json.dumps(config))
         path = f.name
 
-    proc = subprocess.Popen(["sing-box", "-c", path])
-    await asyncio.sleep(0.8)
+    proc = subprocess.Popen(
+        ["sing-box", "-c", path],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+
+    await asyncio.sleep(1.0)
+
+    # читаем stderr
+    err = proc.stderr.read()
+    if err.strip():
+        return False, f"singbox_error: {err}"
 
     try:
         async with httpx.AsyncClient(
