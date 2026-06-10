@@ -1,6 +1,5 @@
 import os
 import json
-import time
 import tempfile
 import subprocess
 import httpx
@@ -15,34 +14,32 @@ asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 SUBS_FOLDER = "subs/type/hysteria2"
 TESTED_FOLDER = "tested"
 
-TEST_TIMEOUT = 3
-MAX_PARALLEL = 100
+TEST_TIMEOUT = 4
+MAX_PARALLEL = 50
 
 os.makedirs(TESTED_FOLDER, exist_ok=True)
 
-
 # ------------------ ПАРСИНГ HYSTERIA2 ------------------
 def parse_hy2(link):
-    try:
-        if link.startswith("hysteria2://"):
-            link = link.replace("hysteria2://", "hy2://")
+    if link.startswith("hysteria2://"):
+        link = link.replace("hysteria2://", "hy2://")
 
-        u = urlparse(link)
-        params = parse_qs(u.query)
+    u = urlparse(link)
+    params = parse_qs(u.query)
 
-        # Если порта нет → ставим 443
-        port = u.port or 443
+    port = u.port or 443
+    server = f"{u.hostname}:{port}"
+    password = u.username or ""
 
-        return {
-            "server": f"{u.hostname}:{port}",
-            "password": u.username,
-            "obfs": params.get("obfs", [""])[0],
-            "sni": params.get("sni", [""])[0] or u.hostname
-        }
+    obfs = params.get("obfs", [""])[0]
+    sni = params.get("sni", [""])[0] or u.hostname
 
-    except Exception as e:
-        raise ValueError(f"parse_error: {e}")
-
+    return {
+        "server": server,
+        "password": password,
+        "obfs": obfs,
+        "sni": sni
+    }
 
 # ------------------ ТЕСТ ОДНОГО ПРОКСИ ------------------
 async def test_proxy(link, port):
@@ -62,17 +59,23 @@ async def test_proxy(link, port):
             "type": "hysteria2",
             "server": cfg["server"],
             "password": cfg["password"],
-            "obfs": cfg["obfs"],
-            "tls": {"enabled": True, "server_name": cfg["sni"]}
+            "tls": {
+                "enabled": True,
+                "server_name": cfg["sni"]
+            }
         }]
     }
+
+    # Добавляем obfs только если он указан
+    if cfg["obfs"]:
+        config["outbounds"][0]["obfs"] = cfg["obfs"]
 
     with tempfile.NamedTemporaryFile("w", delete=False) as f:
         f.write(json.dumps(config))
         path = f.name
 
     proc = subprocess.Popen(["sing-box", "-c", path])
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(0.7)
 
     try:
         async with httpx.AsyncClient(
@@ -91,7 +94,6 @@ async def test_proxy(link, port):
         proc.kill()
         os.remove(path)
 
-
 # ------------------ РАБОЧИЙ ПОТОК ------------------
 async def worker(i, link, good, bad, errors, sem):
     port = 20000 + i
@@ -99,13 +101,12 @@ async def worker(i, link, good, bad, errors, sem):
         print(f"⏳ {link[:60]}...")
         ok, err = await test_proxy(link, port)
         if ok:
-            print("✅ OK")
+            print("✅ Рабочий")
             good.append(link)
         else:
-            print("❌ DEAD")
+            print("❌ Мёртвый")
             bad.append(link)
             errors.append(f"{link}\n{err}\n\n")
-
 
 # ------------------ МАССОВЫЙ ТЕСТ ------------------
 async def test_all(links):
@@ -119,7 +120,6 @@ async def test_all(links):
 
     return good, bad, errors
 
-
 # ------------------ ЗАГРУЗКА ССЫЛОК ------------------
 def load_all():
     links = []
@@ -131,7 +131,6 @@ def load_all():
                     links.append(line)
     return list(dict.fromkeys(links))
 
-
 # ------------------ ЗАПУСК ------------------
 print("🚀 Загружаем ссылки...")
 links = load_all()
@@ -139,7 +138,8 @@ print(f"Найдено: {len(links)}")
 
 good, bad, errors = asyncio.run(test_all(links))
 
-print(f"\nРабочих: {len(good)}")
+print(f"\n🎉 Готово!")
+print(f"Рабочих: {len(good)}")
 print(f"Мёртвых: {len(bad)}")
 
 with open(f"{TESTED_FOLDER}/good_hysteria2.txt", "w") as f:
@@ -151,4 +151,4 @@ with open(f"{TESTED_FOLDER}/bad_hysteria2.txt", "w") as f:
 with open(f"{TESTED_FOLDER}/errors.txt", "w") as f:
     f.writelines(errors)
 
-print("🔥 Готово! Ошибки сохранены в tested/errors.txt")
+print("✅ Результаты сохранены в tested/")
