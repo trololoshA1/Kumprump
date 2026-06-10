@@ -8,18 +8,16 @@ import uvloop
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 
-# Ускоряем asyncio
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 SUBS_FOLDER = "subs/type/hysteria2"
 TESTED_FOLDER = "tested"
 
 TEST_TIMEOUT = 4
-MAX_PARALLEL = 50
+MAX_PARALLEL = 40
 
 os.makedirs(TESTED_FOLDER, exist_ok=True)
 
-# ------------------ ПАРСИНГ HYSTERIA2 ------------------
 def parse_hy2(link):
     if link.startswith("hysteria2://"):
         link = link.replace("hysteria2://", "hy2://")
@@ -41,7 +39,6 @@ def parse_hy2(link):
         "sni": sni
     }
 
-# ------------------ ТЕСТ ОДНОГО ПРОКСИ ------------------
 async def test_proxy(link, port):
     try:
         cfg = parse_hy2(link)
@@ -59,14 +56,16 @@ async def test_proxy(link, port):
             "type": "hysteria2",
             "server": cfg["server"],
             "password": cfg["password"],
+            "auth": {"type": "none"},
+            "udp": {"enabled": True},
             "tls": {
                 "enabled": True,
-                "server_name": cfg["sni"]
+                "server_name": cfg["sni"],
+                "insecure": True
             }
         }]
     }
 
-    # Добавляем obfs только если он указан
     if cfg["obfs"]:
         config["outbounds"][0]["obfs"] = cfg["obfs"]
 
@@ -75,7 +74,7 @@ async def test_proxy(link, port):
         path = f.name
 
     proc = subprocess.Popen(["sing-box", "-c", path])
-    await asyncio.sleep(0.7)
+    await asyncio.sleep(0.8)
 
     try:
         async with httpx.AsyncClient(
@@ -94,7 +93,6 @@ async def test_proxy(link, port):
         proc.kill()
         os.remove(path)
 
-# ------------------ РАБОЧИЙ ПОТОК ------------------
 async def worker(i, link, good, bad, errors, sem):
     port = 20000 + i
     async with sem:
@@ -108,7 +106,6 @@ async def worker(i, link, good, bad, errors, sem):
             bad.append(link)
             errors.append(f"{link}\n{err}\n\n")
 
-# ------------------ МАССОВЫЙ ТЕСТ ------------------
 async def test_all(links):
     good, bad, errors = [], [], []
     sem = asyncio.Semaphore(MAX_PARALLEL)
@@ -120,7 +117,6 @@ async def test_all(links):
 
     return good, bad, errors
 
-# ------------------ ЗАГРУЗКА ССЫЛОК ------------------
 def load_all():
     links = []
     for file in Path(SUBS_FOLDER).glob("*.txt"):
@@ -131,7 +127,6 @@ def load_all():
                     links.append(line)
     return list(dict.fromkeys(links))
 
-# ------------------ ЗАПУСК ------------------
 print("🚀 Загружаем ссылки...")
 links = load_all()
 print(f"Найдено: {len(links)}")
@@ -151,4 +146,4 @@ with open(f"{TESTED_FOLDER}/bad_hysteria2.txt", "w") as f:
 with open(f"{TESTED_FOLDER}/errors.txt", "w") as f:
     f.writelines(errors)
 
-print("✅ Результаты сохранены в tested/")
+print("🔥 Результаты сохранены в tested/")
