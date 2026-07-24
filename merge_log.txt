@@ -3840,3 +3840,15 @@
 2026-07-24 17:31:25,521 | + 500 конфигов из https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub2.txt
 2026-07-24 17:31:25,522 | + 47 конфигов из https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/refs/heads/ma
 2026-07-24 17:31:56,925 | 🎉 Сборка завершена!
+2026-07-24 21:02:32,262 | 🧹 Очищаем папки (кроме hysteria2)...
+2026-07-24 21:02:32,278 | Найдено 81 ссылок. Начинаем скачивание...
+2026-07-24 21:02:32,777 | + 8468 конфигов из https://github.com/AvenCores/goida-vpn-configs/raw/refs/heads/main/git
+2026-07-24 21:03:07,828 | + 188 конфигов из https://raw.githubusercontent.com/Argh94/Proxy-List/refs/heads/main/Hy
+2026-07-24 21:03:07,918 | + 188 конфигов из https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/sub
+2026-07-24 21:03:08,099 | + 205 конфигов из https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/RosTun/utf-8
+2026-07-24 21:03:08,142 | + 23 конфигов из https://raw.githubusercontent.com/Surfboardv2ray/TGParse/main/python/h
+2026-07-24 21:03:10,252 | + 466 конфигов из https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub1.txt
+2026-07-24 21:03:10,321 | + 500 конфигов из https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub2.txt
+2026-07-24 21:03:10,364 | + 38 конфигов из https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/refs/heads/ma
+2026-07-24 21:03:35,100 | + 287975 конфигов из https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/
+2026-07-24 21:04:00,189 | 🎉 Сборка завершена!
