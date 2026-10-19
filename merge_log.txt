@@ -8705,3 +8705,13 @@
 2026-10-19 18:21:35,226 | + 74 конфигов из https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/refs/heads/ma
 2026-10-19 18:21:35,256 | + 500 конфигов из https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub2.txt
 2026-10-19 18:22:19,000 | 🎉 Сборка завершена!
+2026-10-19 23:20:15,220 | 🧹 Очищаем папки (кроме hysteria2)...
+2026-10-19 23:20:15,221 | Найдено 81 ссылок. Начинаем скачивание...
+2026-10-19 23:20:51,265 | + 205 конфигов из https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/RosTun/utf-8
+2026-10-19 23:20:52,158 | + 427 конфигов из https://raw.githubusercontent.com/Argh94/Proxy-List/refs/heads/main/Hy
+2026-10-19 23:20:52,246 | + 188 конфигов из https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/sub
+2026-10-19 23:20:57,340 | + 475 конфигов из https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub1.txt
+2026-10-19 23:20:57,366 | + 82 конфигов из https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/refs/heads/ma
+2026-10-19 23:20:57,376 | + 8 конфигов из https://raw.githubusercontent.com/Surfboardv2ray/TGParse/main/python/h
+2026-10-19 23:20:57,383 | + 500 конфигов из https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub2.txt
+2026-10-19 23:22:07,338 | 🎉 Сборка завершена!
