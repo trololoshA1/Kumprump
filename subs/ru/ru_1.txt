@@ -3,3 +3,7 @@ hysteria2://617z9r1mbzbm1t5z@giftcard.gisora.ir:52000?security=tls&obfs=salamand
 ss://YWVzLTI1Ni1nY206MWVhZGQ0ZTRhMzdiNjYwMQ@45.8.158.176:10801#T.me/Vpn_Mafia 🇷🇺
 ss://YWVzLTI1Ni1nY206NmIzOWFlMzIzNGRmZDY4Yg==@185.22.155.162:10808#🇷🇺139908 | ⚡️Telegram = t.me/SOSkeyNET
 ss://YWVzLTI1Ni1nY206TlRpSEJnNjRmc1k4dThEYkdydHlwRDlnUEdTTDM4NnA@195.133.5.194:18443#@pass_net🎃🕸️🎃🇷🇺
+hysteria2://41edb44c8e@103.88.243.142:11592/?sni=srv-17e124.21freedom.net#🇷🇺199434 | ⚡️Telegram = t.me/SOSkeyNET
+hysteria2://41edb44c8e@srv-17e124.21freedom.net:11592/#🇷🇺199436 | ⚡️Telegram = t.me/SOSkeyNET
+hysteria2://41edb44c8e@103.88.243.142:11592/?sni=srv-17e124.21freedom.net#🇷🇺199434
+hysteria2://41edb44c8e@srv-17e124.21freedom.net:11592/#🇷🇺199436
