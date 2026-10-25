@@ -1,9 +1,5 @@
 vless://5331340c-ef91-404a-92ed-454bf85efe01@130.49.218.26:47222?type=xhttp&headerType=none&security=reality&encryption=none&sni=sempre.moscow&fp=firefox&pbk=ku2hvIz-V3sudUB9Dy6eojXKwkandc2PN12Bb6Z380c&sid=6789f9d3&path=%2F#%F0%9F%87%AB%F0%9F%87%B7%20LTE%203%20%7C%20%D1%82%D0%B3%D0%BA%3A%20%40rostunnel
-hysteria2://41edb44c8e@103.88.243.142:11592/?sni=srv-17e124.21freedom.net#🇷🇺199434 | ⚡️Telegram = t.me/SOSkeyNET
-hysteria2://41edb44c8e@srv-17e124.21freedom.net:11592/#🇷🇺199436 | ⚡️Telegram = t.me/SOSkeyNET
 hysteria2://617z9r1mbzbm1t5z@giftcard.gisora.ir:52000?security=tls&obfs=salamander&obfs-password=09p333uviv2qal0y&insecure=0&sni=giftcard.gisora.ir#Telegram 🆔@cnetvpn 🇷🇺
 ss://YWVzLTI1Ni1nY206MWVhZGQ0ZTRhMzdiNjYwMQ@45.8.158.176:10801#T.me/Vpn_Mafia 🇷🇺
 ss://YWVzLTI1Ni1nY206NmIzOWFlMzIzNGRmZDY4Yg==@185.22.155.162:10808#🇷🇺139908 | ⚡️Telegram = t.me/SOSkeyNET
 ss://YWVzLTI1Ni1nY206TlRpSEJnNjRmc1k4dThEYkdydHlwRDlnUEdTTDM4NnA@195.133.5.194:18443#@pass_net🎃🕸️🎃🇷🇺
-hysteria2://41edb44c8e@103.88.243.142:11592/?sni=srv-17e124.21freedom.net#🇷🇺199434
-hysteria2://41edb44c8e@srv-17e124.21freedom.net:11592/#🇷🇺199436
