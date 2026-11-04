@@ -1,6 +1,7 @@
 vless://5331340c-ef91-404a-92ed-454bf85efe01@130.49.218.26:47222?type=xhttp&headerType=none&security=reality&encryption=none&sni=sempre.moscow&fp=firefox&pbk=ku2hvIz-V3sudUB9Dy6eojXKwkandc2PN12Bb6Z380c&sid=6789f9d3&path=%2F#%F0%9F%87%AB%F0%9F%87%B7%20LTE%203%20%7C%20%D1%82%D0%B3%D0%BA%3A%20%40rostunnel
 ss://YWVzLTI1Ni1nY206MWVhZGQ0ZTRhMzdiNjYwMQ@45.8.158.176:10801#T.me/Vpn_Mafia 🇷🇺
 ss://YWVzLTI1Ni1nY206NmIzOWFlMzIzNGRmZDY4Yg==@185.22.155.162:10808#🇷🇺139908 | ⚡️Telegram = t.me/SOSkeyNET
+ss://YWVzLTI1Ni1nY206TlRpSEJnNjRmc1k4dThEYkdydHlwRDlnUEdTTDM4NnA=@185.22.153.192:18443#🇷🇺RU-🚀@VPNine1
 ss://YWVzLTI1Ni1nY206TlRpSEJnNjRmc1k4dThEYkdydHlwRDlnUEdTTDM4NnA@185.22.153.192:18443#🇷🇺02 | ⚡Telegram = t.me/ex_proxies
 ss://YWVzLTI1Ni1nY206TlRpSEJnNjRmc1k4dThEYkdydHlwRDlnUEdTTDM4NnA@185.22.153.192:18443#🇷🇺03 | ⚡Telegram = t.me/ex_proxies
 ss://YWVzLTI1Ni1nY206TlRpSEJnNjRmc1k4dThEYkdydHlwRDlnUEdTTDM4NnA@185.22.153.192:18443#🇷🇺05 | ⚡Telegram = t.me/ex_proxies
