@@ -953,3 +953,4 @@ ss://YWVzLTI1Ni1nY206MTIzNDU2@0.0.1.6:9#📡电报频道:@clashv8
 ss://YWVzLTI1Ni1nY206MTIzNDU2@0.1.5.2:0#📡聊天群: @zmxoox
 ss://YWVzLTI1Ni1nY206MTIzNDU2@0.6.2.6:0#📡聊天群: @zmxoox
 ss://YWVzLTI1Ni1nY206MTIzNDU2@0.7.1.6:3#📡电报频道:@clashv8
+ss://YWVzLTI1Ni1nY206MTIzNDU2@0.8.2.0:0#📡电报频道:@clashv8
