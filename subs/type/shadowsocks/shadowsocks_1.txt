@@ -956,3 +956,4 @@ ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@leviko-gb2271.shopingggg.ir:443?type=tcp#@
 ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@leviko-nl8242.shopingggg.ir:443#@V2rayNGVPN > کانفیگ رایگان
 ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@leviko-nl8242.shopingggg.ir:443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad#@GozargahAzad|🇳🇱
 ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@leviko-nl8242.shopingggg.ir:443?type=tcp#@meliproxyy
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@141.98.101.178:443#@FarazV2ray
