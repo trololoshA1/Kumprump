@@ -1,17 +1,3 @@
+vless://5331340c-ef91-404a-92ed-454bf85efe01@130.49.218.26:47222?type=xhttp&headerType=none&security=reality&encryption=none&sni=sempre.moscow&fp=firefox&pbk=ku2hvIz-V3sudUB9Dy6eojXKwkandc2PN12Bb6Z380c&sid=6789f9d3&path=%2F#%F0%9F%87%AB%F0%9F%87%B7%20LTE%203%20%7C%20%D1%82%D0%B3%D0%BA%3A%20%40rostunnel
 hysteria2://10550754-cf62-3d3b-ba6a-50be27a275d7@195.133.53.33:443?sni=s516.okgfw.top#%F0%9F%87%B7%F0%9F%87%BARU-%F0%9F%9A%80%40VPNine1
-hysteria2://10550754-cf62-3d3b-ba6a-50be27a275d7@195.133.53.33:443?security=tls&allowInsecure=1&mport=443&sni=s516.okgfw.top#RU-@VPNine1
-hysteria2://00717a40-f058-0001-bd8b-946b3d578273@168.113.254.247:443?sni=vcerx-ru-67sb.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-2197
-hysteria2://00717a40-f058-0001-bd8b-946b3d578273@168.113.254.247:443?sni=vcerx-ru-67sb.my-fade.cloud&alpn=h3#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-1385
-hysteria2://274cf8bb-ff99-0001-81b0-17273a3b7692@168.113.254.183:443?sni=xykmh-ru-70sb.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-748
-hysteria2://3098af7f-dd3e-0001-b8e5-05a194206ac0@168.113.254.183:443?sni=xykmh-ru-70sb.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-608
-hysteria2://401db914-1fef-0001-b41a-287bd9ac13f9@185.151.243.186:443?sni=piodr-ru-74sel.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-244
-hysteria2://41edb44c8e@103.88.243.142:11592?insecure=1&sni=srv-17e124.21freedom.net#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-9
-hysteria2://5c49355f-afbc-0001-9c1c-8205436bb97c@185.151.243.186:443?sni=piodr-ru-74sel.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-64
-hysteria2://5c49355f-afbc-0001-9c1c-8205436bb97c@185.151.243.186:443?sni=piodr-ru-74sel.my-fade.cloud&alpn=h3#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-308
-hysteria2://b006650f-8771-0001-b7fa-e18fc6e80ef1@168.113.254.247:443?insecure=1&alpn=h3&sni=vcerx-ru-67sb.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-1997
-hysteria2://b006650f-8771-0001-b7fa-e18fc6e80ef1@168.113.254.247:443?insecure=1&sni=vcerx-ru-67sb.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-1949
-hysteria2://b006650f-8771-0001-b7fa-e18fc6e80ef1@168.113.254.247:443?sni=vcerx-ru-67sb.my-fade.cloud&alpn=%5Bh3%5D&insecure=1#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8US-2400
-hysteria2://b7941807-1f4d-4bda-a878-92d708b84494@46.8.210.33:8446?obfs=salamander&obfs-password=nTm4oBa6QCpWoAFDVtF6mpMpfMfN8CM6&sni=litelitvalitter.rooferz.surf#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-129
-hysteria2://be986553-5976-0001-9209-3050366e40d1@185.151.243.186:443?sni=piodr-ru-74sel.my-fade.cloud#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-104
-hysteria2://be986553-5976-0001-9209-3050366e40d1@185.151.243.186:443?sni=piodr-ru-74sel.my-fade.cloud&alpn=h3#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-234
-hy2://41edb44c8e@103.88.243.142:11592?insecure=1&sni=srv-17e124#%5BOpenRay%5D%20%F0%9F%87%B7%F0%9F%87%BARU-297
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpWVmxBZmY3N0NuQVU0M0FvYzVqMTVZ@90.156.203.62:5112#🇷🇺 Join+Telegram:@Farah_VPN 🇷🇺
